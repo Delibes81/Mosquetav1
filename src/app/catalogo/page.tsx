@@ -1,5 +1,6 @@
 import ProductCard, { Product } from '@/components/ProductCard';
-
+import { FadeIn } from '@/components/animations/FadeIn';
+import { StaggerContainer } from '@/components/animations/Stagger';
 const catalogProducts: Product[] = [
   {
     id: '1',
@@ -85,14 +86,14 @@ export default function CatalogoPage() {
     <div className="bg-gray-50 min-h-screen">
       {/* Header Banner */}
       <div className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-extrabold font-montserrat tracking-tight">
             Catálogo Completo
           </h1>
           <p className="mt-4 max-w-2xl text-xl text-gray-300 font-inter">
             Descubre nuestra amplia selección de electrodomésticos, muebles y equipos. Calidad y diseño para cada espacio de tu vida.
           </p>
-        </div>
+        </FadeIn>
       </div>
 
       {/* Main Content */}
@@ -100,7 +101,7 @@ export default function CatalogoPage() {
         
         {/* Sidebar / Filters (Mockup) */}
         <aside className="w-full md:w-64 flex-shrink-0">
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 sticky top-24">
+          <FadeIn delay={0.1} className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 sticky top-24">
             <h2 className="text-lg font-bold text-gray-900 font-montserrat mb-4">Filtros</h2>
             
             <div className="mb-6">
@@ -157,7 +158,7 @@ export default function CatalogoPage() {
               </ul>
             </div>
             
-          </div>
+          </FadeIn>
         </aside>
 
         {/* Product Grid */}
@@ -172,11 +173,11 @@ export default function CatalogoPage() {
             </select>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {catalogProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
-          </div>
+          </StaggerContainer>
           
           {/* Pagination Mockup */}
           <div className="mt-12 flex justify-center">
