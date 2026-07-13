@@ -132,22 +132,23 @@ export default function ContactoPage() {
                 </div>
               </div>
 
-              {/* Map Visual (Mockup) */}
+              {/* Map Visual */}
               <div className="mt-10 relative h-64 rounded-xl overflow-hidden shadow-sm border border-gray-200">
-                <Image 
-                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                  alt="Mapa de ubicación" 
-                  fill 
-                  className="object-cover opacity-80"
-                />
-                <div className="absolute inset-0 bg-gray-900/10 flex items-center justify-center">
-                  <div className="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg text-center">
-                    <p className="font-montserrat font-bold text-gray-900 flex items-center gap-2">
-                      <MapPin className="w-5 h-5 text-mosqueta-primary" />
-                      Colonia Guerrero, CDMX
-                    </p>
-                  </div>
-                </div>
+                <iframe 
+                  width="100%" 
+                  height="100%" 
+                  frameBorder="0" 
+                  scrolling="no" 
+                  marginHeight={0} 
+                  marginWidth={0} 
+                  src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=Mosqueta%20132,%20Guerrero,%20Cuauht%C3%A9moc,%20Ciudad%20de%20M%C3%A9xico,%20CDMX+(Mosqueta)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                  title="Mapa de ubicación Mosqueta 132"
+                  className="absolute inset-0"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </div>
           </FadeIn>
