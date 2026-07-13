@@ -70,7 +70,7 @@ const catalogProducts: Product[] = [
     slug: 'mesa-juntas-cristal',
     name: 'Mesa de Juntas de Cristal Templado',
     price: 12500.00,
-    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     category: 'Corporativo',
     msi: true,
   },
