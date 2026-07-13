@@ -54,11 +54,17 @@ export default function ProductGrid() {
           </a>
         </div>
         
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {featuredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </StaggerContainer>
+
+        <div className="mt-8 flex justify-center md:hidden">
+          <a href="/catalogo" className="bg-mosqueta-primary text-white font-bold py-3 px-8 rounded hover:bg-[#b0164e] transition-colors shadow-md w-full text-center">
+            Ver todos los productos
+          </a>
+        </div>
       </div>
     </div>
   );
