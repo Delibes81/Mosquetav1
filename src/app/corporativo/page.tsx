@@ -128,7 +128,7 @@ export default function CorporativoPage() {
             </div>
             <div className="lg:w-1/2 w-full grid grid-cols-2 gap-4">
               <div className="aspect-square relative rounded-lg overflow-hidden shadow-md">
-                <Image src="https://images.unsplash.com/photo-1556761175-5973dc0f32b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sala de juntas" fill className="object-cover" />
+                <Image src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sala de juntas" fill className="object-cover" />
               </div>
               <div className="aspect-square relative rounded-lg overflow-hidden shadow-md mt-8">
                 <Image src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cocina industrial" fill className="object-cover" />
