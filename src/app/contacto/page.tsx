@@ -26,10 +26,10 @@ export default function ContactoPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           
           {/* Form Section */}
-          <FadeIn delay={0.1}>
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 h-full">
+          <FadeIn delay={0.1} className="h-full">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 h-full flex flex-col">
               <h2 className="text-2xl font-bold text-gray-900 font-montserrat mb-6">Envíanos un mensaje</h2>
-              <form className="space-y-6">
+              <form className="space-y-6 flex flex-col flex-grow">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 font-inter">Nombre completo</label>
@@ -52,12 +52,12 @@ export default function ContactoPage() {
                   </select>
                 </div>
 
-                <div>
+                <div className="flex-grow">
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 font-inter">Mensaje</label>
-                  <textarea id="message" rows={5} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-mosqueta-primary focus:ring-mosqueta-primary py-2 px-3 border" placeholder="¿En qué te podemos ayudar?"></textarea>
+                  <textarea id="message" rows={5} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-mosqueta-primary focus:ring-mosqueta-primary py-2 px-3 border h-[calc(100%-2rem)] min-h-[120px]" placeholder="¿En qué te podemos ayudar?"></textarea>
                 </div>
 
-                <button type="button" className="w-full sm:w-auto bg-mosqueta-primary text-white font-bold py-3 px-8 rounded hover:bg-[#b0164e] transition-colors shadow-md">
+                <button type="button" className="mt-auto w-full sm:w-auto bg-mosqueta-primary text-white font-bold py-3 px-8 rounded hover:bg-[#b0164e] transition-colors shadow-md">
                   Enviar Mensaje
                 </button>
               </form>
@@ -65,7 +65,7 @@ export default function ContactoPage() {
           </FadeIn>
 
           {/* Contact Info Section */}
-          <FadeIn delay={0.2}>
+          <FadeIn delay={0.2} className="h-full">
             <div className="flex flex-col justify-between h-full">
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 font-montserrat mb-6">Información de Contacto</h2>
@@ -132,28 +132,31 @@ export default function ContactoPage() {
                 </div>
               </div>
 
-              {/* Map Visual */}
-              <div className="mt-10 relative h-64 rounded-xl overflow-hidden shadow-sm border border-gray-200">
-                <iframe 
-                  width="100%" 
-                  height="100%" 
-                  frameBorder="0" 
-                  scrolling="no" 
-                  marginHeight={0} 
-                  marginWidth={0} 
-                  src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=Mosqueta%20132,%20Guerrero,%20Cuauht%C3%A9moc,%20Ciudad%20de%20M%C3%A9xico,%20CDMX+(Mosqueta)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                  title="Mapa de ubicación Mosqueta 132"
-                  className="absolute inset-0"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-              </div>
             </div>
           </FadeIn>
           
         </div>
+
+        {/* Full Width Map Visual */}
+        <FadeIn delay={0.3} className="mt-12 w-full">
+          <div className="relative h-96 w-full rounded-xl overflow-hidden shadow-sm border border-gray-200">
+            <iframe 
+              width="100%" 
+              height="100%" 
+              frameBorder="0" 
+              scrolling="no" 
+              marginHeight={0} 
+              marginWidth={0} 
+              src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=Mosqueta%20132,%20Guerrero,%20Cuauht%C3%A9moc,%20Ciudad%20de%20M%C3%A9xico,%20CDMX+(Mosqueta)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+              title="Mapa de ubicación Mosqueta 132"
+              className="absolute inset-0"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </FadeIn>
       </div>
     </div>
   );
