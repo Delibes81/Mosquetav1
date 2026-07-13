@@ -53,7 +53,7 @@ export default function SobreNosotrosPage() {
             <div className="lg:w-1/2 w-full">
               <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
                 <Image 
-                  src="https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                  src="https://images.unsplash.com/photo-1585464231875-d9ef1f5ad425?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
                   alt="Centro Histórico CDMX" 
                   fill 
                   className="object-cover"
