@@ -1,5 +1,6 @@
 import { Mail, MapPin, Phone, Clock } from 'lucide-react';
 import Image from 'next/image';
+import { FadeIn } from '@/components/animations/FadeIn';
 
 export const metadata = {
   title: 'Contacto | Mosqueta',
@@ -25,127 +26,131 @@ export default function ContactoPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           
           {/* Form Section */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-            <h2 className="text-2xl font-bold text-gray-900 font-montserrat mb-6">Envíanos un mensaje</h2>
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 font-inter">Nombre completo</label>
-                  <input type="text" id="name" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-mosqueta-primary focus:ring-mosqueta-primary py-2 px-3 border" placeholder="Juan Pérez" />
+          <FadeIn delay={0.1}>
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 h-full">
+              <h2 className="text-2xl font-bold text-gray-900 font-montserrat mb-6">Envíanos un mensaje</h2>
+              <form className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 font-inter">Nombre completo</label>
+                    <input type="text" id="name" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-mosqueta-primary focus:ring-mosqueta-primary py-2 px-3 border" placeholder="Juan Pérez" />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 font-inter">Correo electrónico</label>
+                    <input type="email" id="email" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-mosqueta-primary focus:ring-mosqueta-primary py-2 px-3 border" placeholder="juan@ejemplo.com" />
+                  </div>
                 </div>
+
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 font-inter">Correo electrónico</label>
-                  <input type="email" id="email" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-mosqueta-primary focus:ring-mosqueta-primary py-2 px-3 border" placeholder="juan@ejemplo.com" />
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 font-inter">Asunto</label>
+                  <select id="subject" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-mosqueta-primary focus:ring-mosqueta-primary py-2 px-3 border bg-white">
+                    <option>Duda sobre un producto del catálogo</option>
+                    <option>Seguimiento de mi pedido (Hogar)</option>
+                    <option>Solicitud de cotización B2B (Corporativo)</option>
+                    <option>Servicio Técnico / Garantía</option>
+                    <option>Otro</option>
+                  </select>
                 </div>
-              </div>
 
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 font-inter">Asunto</label>
-                <select id="subject" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-mosqueta-primary focus:ring-mosqueta-primary py-2 px-3 border bg-white">
-                  <option>Duda sobre un producto del catálogo</option>
-                  <option>Seguimiento de mi pedido (Hogar)</option>
-                  <option>Solicitud de cotización B2B (Corporativo)</option>
-                  <option>Servicio Técnico / Garantía</option>
-                  <option>Otro</option>
-                </select>
-              </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 font-inter">Mensaje</label>
+                  <textarea id="message" rows={5} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-mosqueta-primary focus:ring-mosqueta-primary py-2 px-3 border" placeholder="¿En qué te podemos ayudar?"></textarea>
+                </div>
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 font-inter">Mensaje</label>
-                <textarea id="message" rows={5} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-mosqueta-primary focus:ring-mosqueta-primary py-2 px-3 border" placeholder="¿En qué te podemos ayudar?"></textarea>
-              </div>
-
-              <button type="button" className="w-full sm:w-auto bg-mosqueta-primary text-white font-bold py-3 px-8 rounded hover:bg-[#b0164e] transition-colors shadow-md">
-                Enviar Mensaje
-              </button>
-            </form>
-          </div>
+                <button type="button" className="w-full sm:w-auto bg-mosqueta-primary text-white font-bold py-3 px-8 rounded hover:bg-[#b0164e] transition-colors shadow-md">
+                  Enviar Mensaje
+                </button>
+              </form>
+            </div>
+          </FadeIn>
 
           {/* Contact Info Section */}
-          <div className="flex flex-col justify-between">
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 font-montserrat mb-6">Información de Contacto</h2>
-              <div className="space-y-8">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-mosqueta-primary/10 text-mosqueta-primary">
-                      <MapPin className="h-6 w-6" />
+          <FadeIn delay={0.2}>
+            <div className="flex flex-col justify-between h-full">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 font-montserrat mb-6">Información de Contacto</h2>
+                <div className="space-y-8">
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0">
+                      <div className="flex items-center justify-center h-12 w-12 rounded-md bg-mosqueta-primary/10 text-mosqueta-primary">
+                        <MapPin className="h-6 w-6" />
+                      </div>
+                    </div>
+                    <div className="ml-4">
+                      <h3 className="text-lg font-medium text-gray-900 font-montserrat">Sede Histórica</h3>
+                      <p className="mt-2 text-base text-gray-600 font-inter">
+                        Calle Mosqueta<br />
+                        Colonia Guerrero, Cuauhtémoc<br />
+                        Ciudad de México, CDMX
+                      </p>
                     </div>
                   </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900 font-montserrat">Sede Histórica</h3>
-                    <p className="mt-2 text-base text-gray-600 font-inter">
-                      Calle Mosqueta<br />
-                      Colonia Guerrero, Cuauhtémoc<br />
-                      Ciudad de México, CDMX
-                    </p>
+
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0">
+                      <div className="flex items-center justify-center h-12 w-12 rounded-md bg-mosqueta-primary/10 text-mosqueta-primary">
+                        <Mail className="h-6 w-6" />
+                      </div>
+                    </div>
+                    <div className="ml-4">
+                      <h3 className="text-lg font-medium text-gray-900 font-montserrat">Correo Electrónico</h3>
+                      <p className="mt-2 text-base text-gray-600 font-inter">
+                        <a href="mailto:info@mosqueta.com.mx" className="hover:text-mosqueta-primary transition-colors">info@mosqueta.com.mx</a>
+                      </p>
+                      <p className="text-sm text-gray-500 font-inter mt-1">Soporte y Ventas Institucionales</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0">
+                      <div className="flex items-center justify-center h-12 w-12 rounded-md bg-mosqueta-primary/10 text-mosqueta-primary">
+                        <Phone className="h-6 w-6" />
+                      </div>
+                    </div>
+                    <div className="ml-4">
+                      <h3 className="text-lg font-medium text-gray-900 font-montserrat">Teléfono</h3>
+                      <p className="mt-2 text-base text-gray-600 font-inter">
+                        <a href="tel:5512345678" className="hover:text-mosqueta-primary transition-colors">(55) 1234 5678</a>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0">
+                      <div className="flex items-center justify-center h-12 w-12 rounded-md bg-mosqueta-primary/10 text-mosqueta-primary">
+                        <Clock className="h-6 w-6" />
+                      </div>
+                    </div>
+                    <div className="ml-4">
+                      <h3 className="text-lg font-medium text-gray-900 font-montserrat">Horario de Atención</h3>
+                      <p className="mt-2 text-base text-gray-600 font-inter">
+                        Lunes a Viernes: 9:00 AM - 6:00 PM<br />
+                        Sábados: 9:00 AM - 2:00 PM
+                      </p>
+                    </div>
                   </div>
                 </div>
+              </div>
 
-                <div className="flex items-start">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-mosqueta-primary/10 text-mosqueta-primary">
-                      <Mail className="h-6 w-6" />
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900 font-montserrat">Correo Electrónico</h3>
-                    <p className="mt-2 text-base text-gray-600 font-inter">
-                      <a href="mailto:info@mosqueta.com.mx" className="hover:text-mosqueta-primary transition-colors">info@mosqueta.com.mx</a>
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter mt-1">Soporte y Ventas Institucionales</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-mosqueta-primary/10 text-mosqueta-primary">
-                      <Phone className="h-6 w-6" />
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900 font-montserrat">Teléfono</h3>
-                    <p className="mt-2 text-base text-gray-600 font-inter">
-                      <a href="tel:5512345678" className="hover:text-mosqueta-primary transition-colors">(55) 1234 5678</a>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-mosqueta-primary/10 text-mosqueta-primary">
-                      <Clock className="h-6 w-6" />
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900 font-montserrat">Horario de Atención</h3>
-                    <p className="mt-2 text-base text-gray-600 font-inter">
-                      Lunes a Viernes: 9:00 AM - 6:00 PM<br />
-                      Sábados: 9:00 AM - 2:00 PM
+              {/* Map Visual (Mockup) */}
+              <div className="mt-10 relative h-64 rounded-xl overflow-hidden shadow-sm border border-gray-200">
+                <Image 
+                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                  alt="Mapa de ubicación" 
+                  fill 
+                  className="object-cover opacity-80"
+                />
+                <div className="absolute inset-0 bg-gray-900/10 flex items-center justify-center">
+                  <div className="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg text-center">
+                    <p className="font-montserrat font-bold text-gray-900 flex items-center gap-2">
+                      <MapPin className="w-5 h-5 text-mosqueta-primary" />
+                      Colonia Guerrero, CDMX
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Map Visual (Mockup) */}
-            <div className="mt-10 relative h-64 rounded-xl overflow-hidden shadow-sm border border-gray-200">
-              <Image 
-                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                alt="Mapa de ubicación" 
-                fill 
-                className="object-cover opacity-80"
-              />
-              <div className="absolute inset-0 bg-gray-900/10 flex items-center justify-center">
-                <div className="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg text-center">
-                  <p className="font-montserrat font-bold text-gray-900 flex items-center gap-2">
-                    <MapPin className="w-5 h-5 text-mosqueta-primary" />
-                    Colonia Guerrero, CDMX
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          </FadeIn>
           
         </div>
       </div>

@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import { Building2, Users, Truck, HeadphonesIcon, Briefcase, BadgeCheck } from 'lucide-react';
 import Link from 'next/link';
-
+import { FadeIn } from '@/components/animations/FadeIn';
+import { StaggerContainer, StaggerItem } from '@/components/animations/Stagger';
 export const metadata = {
   title: 'Ventas Corporativas | Mosqueta',
   description: 'Soluciones integrales de equipamiento para empresas, hoteles, restaurantes y corporativos.',
@@ -44,7 +45,7 @@ export default function CorporativoPage() {
             priority
           />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+        <FadeIn delay={0.2} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-extrabold font-montserrat tracking-tight mb-6">
               Equipamos el éxito de tu empresa
@@ -61,7 +62,7 @@ export default function CorporativoPage() {
               </Link>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       {/* Benefits Section */}
@@ -74,23 +75,25 @@ export default function CorporativoPage() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                <div className="bg-gray-50 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                  {benefit.icon}
+              <StaggerItem key={index} className="h-full">
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow h-full">
+                  <div className="bg-gray-50 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                    {benefit.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 font-montserrat mb-3">{benefit.title}</h3>
+                  <p className="text-gray-600 font-inter">{benefit.description}</p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 font-montserrat mb-3">{benefit.title}</h3>
-                <p className="text-gray-600 font-inter">{benefit.description}</p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Industries Section */}
       <section className="py-20 bg-white border-y border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-12 items-center">
             <div className="lg:w-1/2">
               <h2 className="text-3xl font-extrabold text-gray-900 font-montserrat mb-6">
@@ -135,12 +138,12 @@ export default function CorporativoPage() {
               </div>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       {/* Contact Form Section */}
       <section id="contacto-corporativo" className="py-20 bg-gray-50">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
             <div className="bg-mosqueta-primary px-8 py-6 text-white text-center">
               <h2 className="text-2xl font-bold font-montserrat">Inicia tu proyecto con nosotros</h2>
@@ -190,7 +193,7 @@ export default function CorporativoPage() {
               <p className="text-xs text-gray-500 text-center mt-4">Al enviar este formulario, aceptas nuestro Aviso de Privacidad.</p>
             </form>
           </div>
-        </div>
+        </FadeIn>
       </section>
     </div>
   );

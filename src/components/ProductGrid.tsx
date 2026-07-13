@@ -1,4 +1,5 @@
 import ProductCard, { Product } from './ProductCard';
+import { StaggerContainer } from './animations/Stagger';
 
 const featuredProducts: Product[] = [
   {
@@ -53,11 +54,11 @@ export default function ProductGrid() {
           </a>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {featuredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </div>
   );

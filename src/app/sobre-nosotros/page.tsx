@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { History, ShieldCheck, Truck, Store, Award } from 'lucide-react';
 import Link from 'next/link';
-
+import { FadeIn } from '@/components/animations/FadeIn';
 export const metadata = {
   title: 'Sobre Nosotros | Mosqueta',
   description: 'Conoce la historia de Mosqueta, una empresa 100% mexicana con más de 60 años de tradición equipando hogares y corporativos.',
@@ -21,19 +21,19 @@ export default function SobreNosotrosPage() {
             priority
           />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <FadeIn delay={0.2} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-montserrat tracking-tight mb-6">
             Más de 60 años de Tradición Mexicana
           </h1>
           <p className="max-w-3xl mx-auto text-xl text-gray-300 font-inter leading-relaxed">
             Somos una empresa 100% familiar, con raíces profundas en la Ciudad de México y una sólida trayectoria equipando corporativos. Hoy, abrimos nuestras puertas a tu hogar.
           </p>
-        </div>
+        </FadeIn>
       </section>
 
       {/* History and Origins */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <div className="lg:w-1/2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mosqueta-secondary/10 text-mosqueta-secondary font-semibold text-sm mb-6 uppercase tracking-wider">
@@ -61,12 +61,12 @@ export default function SobreNosotrosPage() {
               </div>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       {/* Evolution B2B to B2C */}
       <section className="py-20 bg-gray-50 border-y border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row-reverse gap-16 items-center">
             <div className="lg:w-1/2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mosqueta-primary/10 text-mosqueta-primary font-semibold text-sm mb-6 uppercase tracking-wider">
@@ -102,7 +102,7 @@ export default function SobreNosotrosPage() {
               </div>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       {/* Pillars of Trust */}
@@ -116,42 +116,48 @@ export default function SobreNosotrosPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="text-center p-8 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
-              <div className="bg-white w-20 h-20 mx-auto rounded-full flex items-center justify-center shadow-sm border border-gray-100 mb-6 text-mosqueta-primary">
-                <Award className="w-10 h-10" />
+            <FadeIn delay={0.1}>
+              <div className="text-center p-8 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow h-full">
+                <div className="bg-white w-20 h-20 mx-auto rounded-full flex items-center justify-center shadow-sm border border-gray-100 mb-6 text-mosqueta-primary">
+                  <Award className="w-10 h-10" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 font-montserrat mb-4">Alto Valor Funcional</h3>
+                <p className="text-gray-600 font-inter">
+                  Comercializamos productos diseñados para resistir el ritmo de vida actual, tanto en grandes oficinas como en los hogares más dinámicos.
+                </p>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 font-montserrat mb-4">Alto Valor Funcional</h3>
-              <p className="text-gray-600 font-inter">
-                Comercializamos productos diseñados para resistir el ritmo de vida actual, tanto en grandes oficinas como en los hogares más dinámicos.
-              </p>
-            </div>
+            </FadeIn>
 
-            <div className="text-center p-8 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
-              <div className="bg-white w-20 h-20 mx-auto rounded-full flex items-center justify-center shadow-sm border border-gray-100 mb-6 text-mosqueta-primary">
-                <ShieldCheck className="w-10 h-10" />
+            <FadeIn delay={0.2}>
+              <div className="text-center p-8 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow h-full">
+                <div className="bg-white w-20 h-20 mx-auto rounded-full flex items-center justify-center shadow-sm border border-gray-100 mb-6 text-mosqueta-primary">
+                  <ShieldCheck className="w-10 h-10" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 font-montserrat mb-4">Garantía Directa</h3>
+                <p className="text-gray-600 font-inter">
+                  Al ser un proveedor institucional con décadas de respaldo, te ofrecemos trato directo, respuesta rápida y la seriedad que te mereces como cliente.
+                </p>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 font-montserrat mb-4">Garantía Directa</h3>
-              <p className="text-gray-600 font-inter">
-                Al ser un proveedor institucional con décadas de respaldo, te ofrecemos trato directo, respuesta rápida y la seriedad que te mereces como cliente.
-              </p>
-            </div>
+            </FadeIn>
 
-            <div className="text-center p-8 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
-              <div className="bg-white w-20 h-20 mx-auto rounded-full flex items-center justify-center shadow-sm border border-gray-100 mb-6 text-mosqueta-primary">
-                <Truck className="w-10 h-10" />
+            <FadeIn delay={0.3}>
+              <div className="text-center p-8 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow h-full">
+                <div className="bg-white w-20 h-20 mx-auto rounded-full flex items-center justify-center shadow-sm border border-gray-100 mb-6 text-mosqueta-primary">
+                  <Truck className="w-10 h-10" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 font-montserrat mb-4">Logística Propia</h3>
+                <p className="text-gray-600 font-inter">
+                  No dependemos de terceros. Manejamos nuestros propios envíos en la CDMX y Área Metropolitana con personal capacitado para asegurar que todo llegue impecable.
+                </p>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 font-montserrat mb-4">Logística Propia</h3>
-              <p className="text-gray-600 font-inter">
-                No dependemos de terceros. Manejamos nuestros propios envíos en la CDMX y Área Metropolitana con personal capacitado para asegurar que todo llegue impecable.
-              </p>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* CTA / Contact */}
       <section className="bg-mosqueta-primary py-20 text-white text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-extrabold font-montserrat mb-6">¿Estás listo para renovar tus espacios?</h2>
           <p className="text-xl text-mosqueta-primary-100 font-inter mb-10 max-w-2xl mx-auto">
             Descubre nuestro catálogo o contáctanos para proyectos institucionales. Estamos listos para atenderte con la misma calidez de siempre.
@@ -164,7 +170,7 @@ export default function SobreNosotrosPage() {
               info@mosqueta.com.mx
             </a>
           </div>
-        </div>
+        </FadeIn>
       </section>
     </div>
   );

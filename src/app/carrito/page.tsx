@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Trash2, ArrowRight, ShieldCheck, Truck } from 'lucide-react';
+import { FadeIn } from '@/components/animations/FadeIn';
 
 export const metadata = {
   title: 'Carrito de Compras | Mosqueta',
@@ -48,7 +49,7 @@ export default function CarritoPage() {
 
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Cart Items */}
-          <div className="lg:w-2/3">
+          <FadeIn delay={0.1} className="lg:w-2/3">
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
               <div className="hidden sm:grid sm:grid-cols-6 bg-gray-50 p-4 border-b border-gray-200 text-sm font-semibold text-gray-600 font-inter">
                 <div className="col-span-3">Producto</div>
@@ -106,10 +107,10 @@ export default function CarritoPage() {
                 &larr; Continuar comprando
               </Link>
             </div>
-          </div>
+          </FadeIn>
 
           {/* Order Summary */}
-          <div className="lg:w-1/3">
+          <FadeIn delay={0.2} className="lg:w-1/3">
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sticky top-24">
               <h2 className="text-xl font-bold text-gray-900 font-montserrat mb-6">Resumen de Compra</h2>
               
@@ -145,7 +146,7 @@ export default function CarritoPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </div>
     </div>
