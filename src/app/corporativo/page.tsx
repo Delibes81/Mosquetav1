@@ -47,6 +47,13 @@ export default function CorporativoPage() {
         </div>
         <FadeIn delay={0.2} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
           <div className="max-w-3xl">
+            <Image 
+              src="/Artboard 3.png"
+              alt="Mosqueta Isotipo"
+              width={120}
+              height={120}
+              className="h-24 md:h-28 w-auto object-contain mb-8 opacity-90 brightness-0 invert"
+            />
             <h1 className="text-4xl md:text-5xl font-extrabold font-montserrat tracking-tight mb-6">
               Equipamos el éxito de tu empresa
             </h1>

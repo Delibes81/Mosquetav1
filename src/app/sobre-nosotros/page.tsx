@@ -106,8 +106,15 @@ export default function SobreNosotrosPage() {
       </section>
 
       {/* Pillars of Trust */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+      <section className="py-16 md:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
+          <Image 
+            src="/Artboard 2.png" 
+            alt="Mosqueta Logo Completo" 
+            width={400} 
+            height={120} 
+            className="mx-auto mb-6 w-56 md:w-72 h-auto object-contain opacity-90" 
+          />
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 font-montserrat mb-4">Pilares de Confianza</h2>
           <p className="text-xl text-gray-600 font-inter max-w-2xl mx-auto">
             Nuestro servicio institucional respaldado por años de experiencia, ahora enfocado en tu satisfacción total.

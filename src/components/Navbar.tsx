@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Search, ShoppingCart, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
@@ -12,42 +13,45 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <nav className="bg-mosqueta-primary shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-              <div className="bg-mosqueta-primary text-white px-3 py-1 rounded text-3xl font-bold leading-none font-montserrat tracking-tighter">M</div>
-              <div className="flex flex-col justify-center">
-                <span className="text-mosqueta-primary font-montserrat font-bold text-2xl tracking-tight leading-none mb-1">MOSQUETA</span>
-                <span className="text-mosqueta-secondary text-[11px] font-semibold tracking-widest leading-none">HOGAR Y OFICINA</span>
-              </div>
+            <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
+              <Image 
+                src="/Artboard 4 copy.png" 
+                alt="Mosqueta Logo Blanco" 
+                width={200} 
+                height={60} 
+                className="h-12 w-auto object-contain"
+                priority
+              />
             </Link>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 items-center flex-1 justify-center">
-            <Link href="/" className="text-gray-700 hover:text-mosqueta-primary font-semibold text-sm transition-colors font-montserrat">Inicio</Link>
-            <Link href="/catalogo" className="text-gray-700 hover:text-mosqueta-primary font-semibold text-sm transition-colors font-montserrat">Catálogo</Link>
-            <Link href="/corporativo" className="text-gray-700 hover:text-mosqueta-primary font-semibold text-sm transition-colors font-montserrat">Ventas Corporativas</Link>
-            <Link href="/sobre-nosotros" className="text-gray-700 hover:text-mosqueta-primary font-semibold text-sm transition-colors font-montserrat">Sobre Nosotros</Link>
-            <Link href="/contacto" className="text-gray-700 hover:text-mosqueta-primary font-semibold text-sm transition-colors font-montserrat">Contacto</Link>
+            <Link href="/" className="text-white/90 hover:text-white font-semibold text-sm transition-colors font-montserrat">Inicio</Link>
+            <Link href="/catalogo" className="text-white/90 hover:text-white font-semibold text-sm transition-colors font-montserrat">Catálogo</Link>
+            <Link href="/corporativo" className="text-white/90 hover:text-white font-semibold text-sm transition-colors font-montserrat">Ventas Corporativas</Link>
+            <Link href="/sobre-nosotros" className="text-white/90 hover:text-white font-semibold text-sm transition-colors font-montserrat">Sobre Nosotros</Link>
+            <Link href="/contacto" className="text-white/90 hover:text-white font-semibold text-sm transition-colors font-montserrat">Contacto</Link>
           </div>
 
           {/* Icons */}
           <div className="flex items-center space-x-5">
-            <button className="text-gray-600 hover:text-mosqueta-primary transition-colors hidden sm:block" aria-label="Buscar">
+            <button className="text-white/90 hover:text-white transition-colors hidden sm:block" aria-label="Buscar">
               <Search className="w-5 h-5" />
             </button>
-            <Link href="/carrito" className="text-gray-600 hover:text-mosqueta-primary transition-colors relative" aria-label="Carrito" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link href="/carrito" className="text-white/90 hover:text-white transition-colors relative" aria-label="Carrito" onClick={() => setIsMobileMenuOpen(false)}>
               <ShoppingCart className="w-6 h-6" />
-              <span className="absolute -top-1 -right-2 bg-mosqueta-primary text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
+              <span className="absolute -top-1 -right-2 bg-white text-mosqueta-primary text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
                 2
               </span>
             </Link>
             <button 
-              className="text-gray-600 hover:text-mosqueta-primary md:hidden" 
+              className="text-white/90 hover:text-white md:hidden" 
               aria-label="Menú"
               onClick={toggleMobileMenu}
             >
@@ -59,13 +63,13 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-gray-200">
+        <div className="md:hidden bg-mosqueta-primary border-t border-white/10">
           <div className="px-4 pt-2 pb-6 space-y-1 shadow-lg">
-            <Link href="/" className="block px-3 py-3 text-base font-semibold text-gray-700 hover:text-mosqueta-primary hover:bg-gray-50 rounded-md font-montserrat" onClick={() => setIsMobileMenuOpen(false)}>Inicio</Link>
-            <Link href="/catalogo" className="block px-3 py-3 text-base font-semibold text-gray-700 hover:text-mosqueta-primary hover:bg-gray-50 rounded-md font-montserrat" onClick={() => setIsMobileMenuOpen(false)}>Catálogo</Link>
-            <Link href="/corporativo" className="block px-3 py-3 text-base font-semibold text-gray-700 hover:text-mosqueta-primary hover:bg-gray-50 rounded-md font-montserrat" onClick={() => setIsMobileMenuOpen(false)}>Ventas Corporativas</Link>
-            <Link href="/sobre-nosotros" className="block px-3 py-3 text-base font-semibold text-gray-700 hover:text-mosqueta-primary hover:bg-gray-50 rounded-md font-montserrat" onClick={() => setIsMobileMenuOpen(false)}>Sobre Nosotros</Link>
-            <Link href="/contacto" className="block px-3 py-3 text-base font-semibold text-gray-700 hover:text-mosqueta-primary hover:bg-gray-50 rounded-md font-montserrat" onClick={() => setIsMobileMenuOpen(false)}>Contacto</Link>
+            <Link href="/" className="block px-3 py-3 text-base font-semibold text-white/90 hover:text-white hover:bg-white/10 rounded-md font-montserrat" onClick={() => setIsMobileMenuOpen(false)}>Inicio</Link>
+            <Link href="/catalogo" className="block px-3 py-3 text-base font-semibold text-white/90 hover:text-white hover:bg-white/10 rounded-md font-montserrat" onClick={() => setIsMobileMenuOpen(false)}>Catálogo</Link>
+            <Link href="/corporativo" className="block px-3 py-3 text-base font-semibold text-white/90 hover:text-white hover:bg-white/10 rounded-md font-montserrat" onClick={() => setIsMobileMenuOpen(false)}>Ventas Corporativas</Link>
+            <Link href="/sobre-nosotros" className="block px-3 py-3 text-base font-semibold text-white/90 hover:text-white hover:bg-white/10 rounded-md font-montserrat" onClick={() => setIsMobileMenuOpen(false)}>Sobre Nosotros</Link>
+            <Link href="/contacto" className="block px-3 py-3 text-base font-semibold text-white/90 hover:text-white hover:bg-white/10 rounded-md font-montserrat" onClick={() => setIsMobileMenuOpen(false)}>Contacto</Link>
           </div>
         </div>
       )}
