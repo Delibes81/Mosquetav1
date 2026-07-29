@@ -72,6 +72,45 @@ export default function CorporativoPage() {
         </FadeIn>
       </section>
 
+      {/* Clients Section */}
+      <section className="py-12 bg-white border-b border-gray-200">
+        <FadeIn className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-sm font-semibold text-gray-500 uppercase tracking-widest font-montserrat mb-8">
+            Empresas e instituciones que confían en nosotros
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-70">
+            {/* Televisa */}
+            <div className="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer">
+              <div className="w-8 h-8 rounded-full bg-[#f47b20] flex flex-col justify-center items-center gap-[2px] overflow-hidden p-1 shadow-sm">
+                <div className="w-[120%] h-[3px] bg-white rounded-full -ml-1"></div>
+                <div className="w-[120%] h-[3px] bg-white rounded-full -ml-1"></div>
+                <div className="w-[120%] h-[3px] bg-white rounded-full -ml-1"></div>
+                <div className="w-[120%] h-[3px] bg-white rounded-full -ml-1"></div>
+              </div>
+              <span className="font-extrabold text-2xl font-montserrat tracking-tight text-[#004a98]">Televisa</span>
+            </div>
+
+            {/* Nestlé */}
+            <div className="flex items-center grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer">
+              <span className="font-serif font-bold text-4xl text-[#5c3a21] tracking-tight relative">
+                N<span className="text-3xl">estlé</span>
+              </span>
+            </div>
+
+            {/* Grupo Martí */}
+            <div className="flex items-center grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer">
+              <span className="font-black italic text-3xl font-montserrat tracking-tighter text-[#e3000f] uppercase">Martí</span>
+            </div>
+
+            {/* ARA */}
+            <div className="flex flex-col items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer text-[#004A99] font-bold">
+               <span className="font-extrabold text-3xl md:text-4xl font-montserrat tracking-tighter leading-none">ara</span>
+               <span className="text-[9px] font-semibold tracking-[0.2em] uppercase mt-1">Consorcio</span>
+            </div>
+          </div>
+        </FadeIn>
+      </section>
+
       {/* Benefits Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
