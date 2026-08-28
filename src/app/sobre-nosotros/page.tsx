@@ -80,7 +80,7 @@ export default function SobreNosotrosPage() {
                 Durante décadas, nuestro fuerte ha sido el equipamiento por volumen. Contamos con una prestigiosa cartera de clientes que incluye a titanes de la industria como <strong>Grupo Martí, Desarrollos Residenciales ARA, Nestlé, Televisa</strong> y múltiples proyectos del sector gobierno.
               </p>
               <p className="text-lg text-gray-600 font-inter leading-relaxed">
-                Hoy, Mosqueta da el salto al mundo digital creando nuestra "sucursal en línea". Nuestro objetivo es claro: llevar la misma calidad, durabilidad y seriedad corporativa que exigen las grandes empresas, directamente a los hogares de la clase media mexicana. Al eliminar intermediarios, te garantizamos un precio justo por un valor inigualable.
+                Hoy, Mosqueta da el salto al mundo digital creando nuestra &ldquo;sucursal en línea&rdquo;. Nuestro objetivo es claro: llevar la misma calidad, durabilidad y seriedad corporativa que exigen las grandes empresas, directamente a los hogares de la clase media mexicana. Al eliminar intermediarios, te garantizamos un precio justo por un valor inigualable.
               </p>
             </div>
             <div className="lg:w-1/2 w-full grid grid-cols-2 gap-4">

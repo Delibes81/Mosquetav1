@@ -1,5 +1,4 @@
 import { Mail, MapPin, Phone, Clock } from 'lucide-react';
-import Image from 'next/image';
 import { FadeIn } from '@/components/animations/FadeIn';
 
 export const metadata = {

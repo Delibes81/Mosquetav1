@@ -6,9 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "catalog:import": "node scripts/import-catalog-to-supabase.mjs",
+    "catalog:import:dry": "node scripts/import-catalog-to-supabase.mjs --dry-run",
+    "admin:grant": "node scripts/grant-admin-role.mjs"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.12.5",
+    "@supabase/supabase-js": "^2.112.4",
     "framer-motion": "^12.42.2",
     "lucide-react": "^1.24.0",
     "next": "16.2.10",

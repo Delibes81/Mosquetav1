@@ -1,13 +1,17 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function HeroSection() {
   return (
     <div className="relative bg-gray-900">
       <div className="absolute inset-0">
-        <img
-          className="w-full h-full object-cover opacity-40"
+        <Image
+          className="object-cover opacity-40"
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
           alt="Hogar y Oficina"
+          fill
+          loading="eager"
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-transparent mix-blend-multiply" />
       </div>

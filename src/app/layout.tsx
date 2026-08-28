@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
-import { Montserrat, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
-import TopBanner from "@/components/TopBanner";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import RouteShell from "@/components/RouteShell";
 
-const montserrat = Montserrat({
+const montserrat = localFont({
+  src: "./fonts/Montserrat-Latin.woff2",
   variable: "--font-montserrat",
-  subsets: ["latin"],
+  weight: "100 900",
+  display: "swap",
 });
 
-const inter = Inter({
+const inter = localFont({
+  src: "./fonts/Inter-Latin.woff2",
   variable: "--font-inter",
-  subsets: ["latin"],
+  weight: "100 900",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -31,10 +33,7 @@ export default function RootLayout({
       className={`${montserrat.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-inter">
-        <TopBanner />
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <RouteShell>{children}</RouteShell>
       </body>
     </html>
   );

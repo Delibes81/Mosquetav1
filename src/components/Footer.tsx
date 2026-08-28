@@ -43,15 +43,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Pagos */}
+          {/* Estado comercial */}
           <div>
-            <h3 className="font-montserrat font-bold text-gray-900 mb-4">Métodos de Pago</h3>
+            <h3 className="font-montserrat font-bold text-gray-900 mb-4">Compra en línea</h3>
             <div className="flex flex-wrap gap-2 mb-4">
-              <span className="px-3 py-1 bg-white border border-gray-200 rounded text-xs font-semibold text-gray-700">Tarjetas</span>
-              <span className="px-3 py-1 bg-white border border-gray-200 rounded text-xs font-semibold text-gray-700">Transferencia SPEI</span>
-              <span className="px-3 py-1 bg-white border border-gray-200 rounded text-xs font-semibold text-gray-700">OXXO</span>
+              <span className="px-3 py-1 bg-white border border-gray-200 rounded text-xs font-semibold text-gray-700">Próximamente</span>
             </div>
-            <p className="text-xs text-gray-500 font-inter">Pagos 100% Seguros a través de Stripe</p>
+            <p className="text-xs text-gray-500 font-inter">Estamos incorporando precios, existencias, entregas y pagos seguros.</p>
           </div>
         </div>
 

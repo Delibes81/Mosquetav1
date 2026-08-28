@@ -46,9 +46,6 @@ export default function Navbar() {
             </button>
             <Link href="/carrito" className="text-white/90 hover:text-white transition-colors relative" aria-label="Carrito" onClick={() => setIsMobileMenuOpen(false)}>
               <ShoppingCart className="w-6 h-6" />
-              <span className="absolute -top-1 -right-2 bg-white text-mosqueta-primary text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
-                2
-              </span>
             </Link>
             <button 
               className="text-white/90 hover:text-white md:hidden" 
