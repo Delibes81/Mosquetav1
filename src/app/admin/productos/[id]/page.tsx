@@ -47,11 +47,12 @@ export default async function EditAdminProductPage({ params }: { params: Promise
 
         <CatalogItemForm item={item} brands={options.brands} categories={options.categories} />
         <CatalogImageManager
-          key={images.map((image) => `${image.id}:${image.sortOrder}:${image.isPrimary}`).join('|')}
+          key={images.map((image) => `${image.id}:${image.storagePath}:${image.altText}:${image.sortOrder}:${image.isPrimary}`).join('|')}
           productId={item.productId}
           variantId={item.variantId}
           images={images}
           disabled={isArchived}
+          canManageFiles={session.role === 'admin'}
         />
       </div>
     </AdminShell>

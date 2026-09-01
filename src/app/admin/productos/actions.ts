@@ -27,6 +27,20 @@ interface ReorderCatalogImagesInput {
   imageIds: string[];
 }
 
+interface CatalogImageTargetInput {
+  productId: string;
+  variantId: string;
+  imageId: string;
+}
+
+interface UpdateCatalogImageAltInput extends CatalogImageTargetInput {
+  altText: string;
+}
+
+interface ReplaceCatalogImageInput extends CatalogImageTargetInput {
+  storagePath: string;
+}
+
 const allowedAvailability = new Set<CatalogAvailability>([
   'por-confirmar',
   'en-stock',
@@ -155,6 +169,40 @@ function revalidateCatalogImages(variantId: string, slug: string) {
   revalidateCatalog(slug);
 }
 
+function isValidImageTarget(input: CatalogImageTargetInput) {
+  return Boolean(
+    input
+    && typeof input.productId === 'string'
+    && typeof input.variantId === 'string'
+    && typeof input.imageId === 'string'
+    && uuidPattern.test(input.productId)
+    && uuidPattern.test(input.variantId)
+    && uuidPattern.test(input.imageId),
+  );
+}
+
+function catalogStorageObjectPath(storagePath: string) {
+  const prefix = `${catalogImageBucket}/`;
+  return storagePath.startsWith(prefix) ? storagePath.slice(prefix.length) : null;
+}
+
+async function verifyUploadedCatalogImage(
+  supabase: Awaited<ReturnType<typeof createSupabaseServerClient>>,
+  storagePath: string,
+) {
+  const objectPath = catalogStorageObjectPath(storagePath);
+  if (!objectPath) return false;
+
+  const separator = objectPath.lastIndexOf('/');
+  const folder = objectPath.slice(0, separator);
+  const fileName = objectPath.slice(separator + 1);
+  const { data, error } = await supabase.storage
+    .from(catalogImageBucket)
+    .list(folder, { limit: 10, search: fileName });
+
+  return !error && Boolean(data?.some((object) => object.name === fileName));
+}
+
 export async function registerCatalogImagesAction(
   input: RegisterCatalogImagesInput,
 ): Promise<CatalogImageActionResult> {
@@ -186,15 +234,7 @@ export async function registerCatalogImagesAction(
   }
 
   for (const storagePath of uniquePaths) {
-    const objectPath = storagePath.slice(catalogImageBucket.length + 1);
-    const separator = objectPath.lastIndexOf('/');
-    const folder = objectPath.slice(0, separator);
-    const fileName = objectPath.slice(separator + 1);
-    const { data, error } = await target.supabase.storage
-      .from(catalogImageBucket)
-      .list(folder, { limit: 10, search: fileName });
-
-    if (error || !data?.some((object) => object.name === fileName)) {
+    if (!await verifyUploadedCatalogImage(target.supabase, storagePath)) {
       return { status: 'error', message: 'No se pudo verificar una imagen recién subida.' };
     }
   }
@@ -265,6 +305,121 @@ export async function reorderCatalogImagesAction(
 
   revalidateCatalogImages(input.variantId, target.slug);
   return { status: 'success', message: 'Orden guardado. La primera imagen ahora es la principal.' };
+}
+
+export async function updateCatalogImageAltAction(
+  input: UpdateCatalogImageAltInput,
+): Promise<CatalogImageActionResult> {
+  await assertAdmin();
+  if (!isValidImageTarget(input) || typeof input.altText !== 'string') {
+    return { status: 'error', message: 'Los datos de la imagen no son válidos.' };
+  }
+
+  const altText = input.altText.trim().slice(0, 180);
+  const target = await getVerifiedCatalogTarget(input.productId, input.variantId);
+  if (!target) return { status: 'error', message: 'El producto o la variante no son válidos.' };
+
+  const { data, error } = await target.supabase
+    .from('catalog_product_images')
+    .update({ alt_text: altText })
+    .eq('id', input.imageId)
+    .eq('product_id', input.productId)
+    .or(`variant_id.eq.${input.variantId},variant_id.is.null`)
+    .select('id')
+    .maybeSingle();
+
+  if (error || !data) {
+    return { status: 'error', message: `No se pudo guardar el texto alternativo${error ? `: ${error.message}` : '.'}` };
+  }
+
+  revalidateCatalogImages(input.variantId, target.slug);
+  return { status: 'success', message: 'Texto alternativo actualizado.' };
+}
+
+export async function replaceCatalogImageAction(
+  input: ReplaceCatalogImageInput,
+): Promise<CatalogImageActionResult> {
+  const session = await assertAdmin();
+  if (session.role !== 'admin') {
+    return { status: 'error', message: 'Sólo un administrador puede reemplazar imágenes.' };
+  }
+  if (!isValidImageTarget(input) || typeof input.storagePath !== 'string') {
+    return { status: 'error', message: 'Los datos del reemplazo no son válidos.' };
+  }
+
+  const expectedPathPattern = new RegExp(
+    `^${catalogImageBucket}/${input.productId}/${input.variantId}/${uuidSource}\\.webp$`,
+    'i',
+  );
+  if (!expectedPathPattern.test(input.storagePath)) {
+    return { status: 'error', message: 'La ruta de la nueva imagen no es válida.' };
+  }
+
+  const target = await getVerifiedCatalogTarget(input.productId, input.variantId);
+  if (!target) return { status: 'error', message: 'El producto o la variante no son válidos.' };
+  if (!await verifyUploadedCatalogImage(target.supabase, input.storagePath)) {
+    return { status: 'error', message: 'No se pudo verificar la nueva imagen.' };
+  }
+
+  const { data: previousStoragePath, error } = await target.supabase.rpc('replace_catalog_image', {
+    p_product_id: input.productId,
+    p_variant_id: input.variantId,
+    p_image_id: input.imageId,
+    p_storage_path: input.storagePath,
+  });
+
+  if (error) return { status: 'error', message: `No se pudo reemplazar la imagen: ${error.message}` };
+
+  const previousObjectPath = typeof previousStoragePath === 'string'
+    ? catalogStorageObjectPath(previousStoragePath)
+    : null;
+  let cleanupWarning = '';
+  if (previousObjectPath) {
+    const { error: cleanupError } = await target.supabase.storage
+      .from(catalogImageBucket)
+      .remove([previousObjectPath]);
+    if (cleanupError) cleanupWarning = ' El archivo anterior quedó pendiente de limpieza.';
+  }
+
+  revalidateCatalogImages(input.variantId, target.slug);
+  return { status: 'success', message: `Imagen reemplazada y optimizada en WebP.${cleanupWarning}` };
+}
+
+export async function deleteCatalogImageAction(
+  input: CatalogImageTargetInput,
+): Promise<CatalogImageActionResult> {
+  const session = await assertAdmin();
+  if (session.role !== 'admin') {
+    return { status: 'error', message: 'Sólo un administrador puede eliminar imágenes.' };
+  }
+  if (!isValidImageTarget(input)) {
+    return { status: 'error', message: 'La imagen que intentas eliminar no es válida.' };
+  }
+
+  const target = await getVerifiedCatalogTarget(input.productId, input.variantId);
+  if (!target) return { status: 'error', message: 'El producto o la variante no son válidos.' };
+
+  const { data: deletedStoragePath, error } = await target.supabase.rpc('delete_catalog_image', {
+    p_product_id: input.productId,
+    p_variant_id: input.variantId,
+    p_image_id: input.imageId,
+  });
+
+  if (error) return { status: 'error', message: `No se pudo eliminar la imagen: ${error.message}` };
+
+  const deletedObjectPath = typeof deletedStoragePath === 'string'
+    ? catalogStorageObjectPath(deletedStoragePath)
+    : null;
+  let cleanupWarning = '';
+  if (deletedObjectPath) {
+    const { error: cleanupError } = await target.supabase.storage
+      .from(catalogImageBucket)
+      .remove([deletedObjectPath]);
+    if (cleanupError) cleanupWarning = ' El archivo quedó pendiente de limpieza en Storage.';
+  }
+
+  revalidateCatalogImages(input.variantId, target.slug);
+  return { status: 'success', message: `Imagen eliminada de la galería.${cleanupWarning}` };
 }
 
 export async function saveCatalogItemAction(
