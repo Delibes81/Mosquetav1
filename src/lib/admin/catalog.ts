@@ -4,11 +4,13 @@ import { cache } from 'react';
 import { notFound } from 'next/navigation';
 import { requireAdmin } from '@/lib/admin/auth';
 import type {
+  AdminCatalogImage,
   AdminCatalogItem,
   CatalogAvailability,
   CatalogOption,
   CatalogProductStatus,
 } from '@/lib/admin/catalog-types';
+import { resolveCatalogImage } from '@/lib/catalog-image';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 interface RelatedOptionRow {
@@ -133,6 +135,44 @@ export async function getAdminCatalogItem(variantId: string) {
   const item = items.find((candidate) => candidate.variantId === variantId);
   if (!item) notFound();
   return item;
+}
+
+interface CatalogImageRow {
+  id: string;
+  product_id: string;
+  variant_id: string | null;
+  storage_path: string;
+  alt_text: string;
+  image_status: 'referencia' | 'final';
+  is_primary: boolean;
+  sort_order: number;
+}
+
+export async function getAdminCatalogImages(productId: string, variantId: string) {
+  await requireAdmin();
+  const supabase = await createSupabaseServerClient();
+  const { data, error } = await supabase
+    .from('catalog_product_images')
+    .select('id,product_id,variant_id,storage_path,alt_text,image_status,is_primary,sort_order')
+    .eq('product_id', productId)
+    .or(`variant_id.eq.${variantId},variant_id.is.null`)
+    .order('is_primary', { ascending: false })
+    .order('sort_order', { ascending: true })
+    .order('created_at', { ascending: true });
+
+  if (error) throw new Error(`No se pudieron cargar las imágenes: ${error.message}`);
+
+  return ((data ?? []) as CatalogImageRow[]).map((image): AdminCatalogImage => ({
+    id: image.id,
+    productId: image.product_id,
+    variantId: image.variant_id,
+    storagePath: image.storage_path,
+    url: resolveCatalogImage(image.storage_path),
+    altText: image.alt_text,
+    imageStatus: image.image_status,
+    isPrimary: image.is_primary,
+    sortOrder: image.sort_order,
+  }));
 }
 
 export const getCatalogOptions = cache(async () => {

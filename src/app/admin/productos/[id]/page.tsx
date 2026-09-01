@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 import { Archive, RotateCcw } from 'lucide-react';
 import AdminShell from '@/components/admin/AdminShell';
 import CatalogItemForm from '@/components/admin/CatalogItemForm';
+import CatalogImageManager from '@/components/admin/CatalogImageManager';
 import { setProductArchivedAction } from '@/app/admin/productos/actions';
 import { requireAdmin } from '@/lib/admin/auth';
-import { getAdminCatalogItem, getCatalogOptions } from '@/lib/admin/catalog';
+import { getAdminCatalogImages, getAdminCatalogItem, getCatalogOptions } from '@/lib/admin/catalog';
 
 export const dynamic = 'force-dynamic';
 export const metadata: Metadata = { title: 'Editar producto' };
@@ -16,6 +17,7 @@ export default async function EditAdminProductPage({ params }: { params: Promise
     getAdminCatalogItem(id),
     getCatalogOptions(),
   ]);
+  const images = await getAdminCatalogImages(item.productId, item.variantId);
   const isArchived = item.status === 'archived';
   const archiveAction = setProductArchivedAction.bind(null, item.productId, !isArchived);
 
@@ -44,6 +46,13 @@ export default async function EditAdminProductPage({ params }: { params: Promise
         </header>
 
         <CatalogItemForm item={item} brands={options.brands} categories={options.categories} />
+        <CatalogImageManager
+          key={images.map((image) => `${image.id}:${image.sortOrder}:${image.isPrimary}`).join('|')}
+          productId={item.productId}
+          variantId={item.variantId}
+          images={images}
+          disabled={isArchived}
+        />
       </div>
     </AdminShell>
   );

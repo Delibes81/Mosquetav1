@@ -13,6 +13,18 @@ export interface CatalogOption {
   name: string;
 }
 
+export interface AdminCatalogImage {
+  id: string;
+  productId: string;
+  variantId: string | null;
+  storagePath: string;
+  url: string;
+  altText: string;
+  imageStatus: 'referencia' | 'final';
+  isPrimary: boolean;
+  sortOrder: number;
+}
+
 export interface AdminCatalogItem {
   productId: string;
   variantId: string;

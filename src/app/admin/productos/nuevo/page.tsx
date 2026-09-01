@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ImagePlus } from 'lucide-react';
 import AdminShell from '@/components/admin/AdminShell';
 import CatalogItemForm from '@/components/admin/CatalogItemForm';
 import { requireAdmin } from '@/lib/admin/auth';
@@ -20,6 +21,14 @@ export default async function NewAdminProductPage() {
         </header>
 
         <CatalogItemForm item={null} brands={options.brands} categories={options.categories} />
+
+        <section className="mt-6 rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-6 text-center">
+          <ImagePlus className="mx-auto text-slate-400" size={30} />
+          <h2 className="mt-2 font-montserrat text-lg font-extrabold text-slate-800">Galería del producto</h2>
+          <p className="mt-1 text-sm text-slate-500">
+            Guarda primero la ficha. Al terminar, te llevaremos a la edición para cargar y ordenar sus imágenes.
+          </p>
+        </section>
       </div>
     </AdminShell>
   );

@@ -7,6 +7,26 @@ import type { CatalogAvailability } from '@/lib/admin/catalog-types';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import type { CatalogFormState } from '@/app/admin/productos/form-state';
 
+const catalogImageBucket = 'catalog-products';
+const maxImagesPerUpload = 10;
+
+export interface CatalogImageActionResult {
+  status: 'success' | 'error';
+  message: string;
+}
+
+interface RegisterCatalogImagesInput {
+  productId: string;
+  variantId: string;
+  storagePaths: string[];
+}
+
+interface ReorderCatalogImagesInput {
+  productId: string;
+  variantId: string;
+  imageIds: string[];
+}
+
 const allowedAvailability = new Set<CatalogAvailability>([
   'por-confirmar',
   'en-stock',
@@ -14,7 +34,8 @@ const allowedAvailability = new Set<CatalogAvailability>([
   'agotado',
 ]);
 
-const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const uuidSource = '[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}';
+const uuidPattern = new RegExp(`^${uuidSource}$`, 'i');
 
 function slugify(value: string) {
   return value
@@ -109,6 +130,141 @@ function revalidateCatalog(slug?: string) {
   revalidatePath('/catalogo');
   revalidatePath('/producto/[slug]', 'page');
   if (slug) revalidatePath(`/producto/${slug}`);
+}
+
+async function getVerifiedCatalogTarget(productId: string, variantId: string) {
+  if (!uuidPattern.test(productId) || !uuidPattern.test(variantId)) return null;
+
+  const supabase = await createSupabaseServerClient();
+  const { data, error } = await supabase
+    .from('catalog_variants')
+    .select('id,slug,product:catalog_products!inner(id,name)')
+    .eq('id', variantId)
+    .eq('product_id', productId)
+    .maybeSingle();
+
+  if (error || !data) return null;
+  const product = Array.isArray(data.product) ? data.product[0] : data.product;
+  if (!product) return null;
+
+  return { supabase, slug: data.slug, productName: product.name };
+}
+
+function revalidateCatalogImages(variantId: string, slug: string) {
+  revalidatePath(`/admin/productos/${variantId}`);
+  revalidateCatalog(slug);
+}
+
+export async function registerCatalogImagesAction(
+  input: RegisterCatalogImagesInput,
+): Promise<CatalogImageActionResult> {
+  await assertAdmin();
+  if (
+    !input
+    || typeof input.productId !== 'string'
+    || typeof input.variantId !== 'string'
+    || !Array.isArray(input.storagePaths)
+    || input.storagePaths.some((path) => typeof path !== 'string')
+  ) {
+    return { status: 'error', message: 'Los datos de la carga no son válidos.' };
+  }
+
+  const uniquePaths = [...new Set(input.storagePaths)];
+  const target = await getVerifiedCatalogTarget(input.productId, input.variantId);
+
+  if (!target) return { status: 'error', message: 'El producto o la variante no son válidos.' };
+  if (uniquePaths.length === 0 || uniquePaths.length > maxImagesPerUpload) {
+    return { status: 'error', message: 'Selecciona entre 1 y 10 imágenes por carga.' };
+  }
+
+  const expectedPathPattern = new RegExp(
+    `^${catalogImageBucket}/${input.productId}/${input.variantId}/${uuidSource}\\.webp$`,
+    'i',
+  );
+  if (uniquePaths.some((path) => !expectedPathPattern.test(path))) {
+    return { status: 'error', message: 'Una de las rutas de imagen no es válida.' };
+  }
+
+  for (const storagePath of uniquePaths) {
+    const objectPath = storagePath.slice(catalogImageBucket.length + 1);
+    const separator = objectPath.lastIndexOf('/');
+    const folder = objectPath.slice(0, separator);
+    const fileName = objectPath.slice(separator + 1);
+    const { data, error } = await target.supabase.storage
+      .from(catalogImageBucket)
+      .list(folder, { limit: 10, search: fileName });
+
+    if (error || !data?.some((object) => object.name === fileName)) {
+      return { status: 'error', message: 'No se pudo verificar una imagen recién subida.' };
+    }
+  }
+
+  const { data: currentImages, error: currentImagesError } = await target.supabase
+    .from('catalog_product_images')
+    .select('id,is_primary,sort_order')
+    .eq('product_id', input.productId)
+    .or(`variant_id.eq.${input.variantId},variant_id.is.null`)
+    .order('sort_order', { ascending: false });
+
+  if (currentImagesError) {
+    return { status: 'error', message: `No se pudo preparar la galería: ${currentImagesError.message}` };
+  }
+
+  const nextSortOrder = (currentImages?.[0]?.sort_order ?? -1) + 1;
+  const hasPrimary = currentImages?.some((image) => image.is_primary) ?? false;
+  const rows = uniquePaths.map((storagePath, index) => ({
+    product_id: input.productId,
+    variant_id: input.variantId,
+    storage_path: storagePath,
+    alt_text: `${target.productName} - imagen ${nextSortOrder + index + 1}`,
+    image_status: 'final',
+    is_primary: !hasPrimary && index === 0,
+    sort_order: nextSortOrder + index,
+  }));
+  const { error: insertError } = await target.supabase.from('catalog_product_images').insert(rows);
+
+  if (insertError) {
+    return { status: 'error', message: `No se pudieron registrar las imágenes: ${insertError.message}` };
+  }
+
+  revalidateCatalogImages(input.variantId, target.slug);
+  return {
+    status: 'success',
+    message: `${uniquePaths.length} ${uniquePaths.length === 1 ? 'imagen agregada' : 'imágenes agregadas'} en WebP.`,
+  };
+}
+
+export async function reorderCatalogImagesAction(
+  input: ReorderCatalogImagesInput,
+): Promise<CatalogImageActionResult> {
+  await assertAdmin();
+  if (
+    !input
+    || typeof input.productId !== 'string'
+    || typeof input.variantId !== 'string'
+    || !Array.isArray(input.imageIds)
+    || input.imageIds.some((id) => typeof id !== 'string')
+  ) {
+    return { status: 'error', message: 'Los datos del orden no son válidos.' };
+  }
+
+  const target = await getVerifiedCatalogTarget(input.productId, input.variantId);
+
+  if (!target) return { status: 'error', message: 'El producto o la variante no son válidos.' };
+  if (input.imageIds.length === 0 || input.imageIds.some((id) => !uuidPattern.test(id))) {
+    return { status: 'error', message: 'El orden de imágenes no es válido.' };
+  }
+
+  const { error } = await target.supabase.rpc('set_catalog_image_order', {
+    p_product_id: input.productId,
+    p_variant_id: input.variantId,
+    p_image_ids: input.imageIds,
+  });
+
+  if (error) return { status: 'error', message: `No se pudo guardar el orden: ${error.message}` };
+
+  revalidateCatalogImages(input.variantId, target.slug);
+  return { status: 'success', message: 'Orden guardado. La primera imagen ahora es la principal.' };
 }
 
 export async function saveCatalogItemAction(
