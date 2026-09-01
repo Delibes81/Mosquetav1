@@ -3,8 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ChevronRight, FileText, MessageCircle, Truck } from 'lucide-react';
-import { catalogProducts, formatProductPrice } from '@/data/products';
+import { formatProductPrice, type ProductAvailability } from '@/data/products';
+import { absoluteCatalogImage, PRODUCT_IMAGE_BLUR_DATA_URL } from '@/lib/catalog-image';
 import { getCatalogProductBySlug } from '@/lib/catalog';
+import { absoluteUrl, siteConfig } from '@/lib/site';
 
 export const revalidate = 300;
 
@@ -12,19 +14,62 @@ interface ProductPageProps {
   params: Promise<{ slug: string }>;
 }
 
-export function generateStaticParams() {
-  return catalogProducts.map((product) => ({ slug: product.slug }));
+const availabilityLabels: Record<ProductAvailability, string> = {
+  'por-confirmar': 'Por confirmar',
+  'en-stock': 'En stock',
+  'sobre-pedido': 'Sobre pedido',
+  agotado: 'Agotado',
+};
+
+const schemaAvailability: Record<ProductAvailability, string> = {
+  'por-confirmar': 'https://schema.org/OnlineOnly',
+  'en-stock': 'https://schema.org/InStock',
+  'sobre-pedido': 'https://schema.org/PreOrder',
+  agotado: 'https://schema.org/OutOfStock',
+};
+
+function productDescription(specifications: string, brand: string, model: string) {
+  const normalized = specifications.replace(/\s+/g, ' ').trim();
+  return `${brand} ${model}. ${normalized}`.slice(0, 158);
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const { slug } = await params;
   const product = await getCatalogProductBySlug(slug);
 
-  if (!product) return { title: 'Producto no encontrado | Mosqueta' };
+  if (!product) {
+    return {
+      title: 'Producto no encontrado',
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const description = productDescription(product.specifications, product.brand, product.model);
+  const pathname = `/producto/${product.slug}`;
+  const title = `${product.name} ${product.model}`;
+  const image = absoluteCatalogImage(product.image);
+  const canBeIndexed = product.dataStatus !== 'requiere-revision';
 
   return {
-    title: `${product.name} | Mosqueta`,
-    description: `${product.brand} ${product.model}. ${product.specifications.slice(0, 135)}`,
+    title,
+    description,
+    alternates: { canonical: pathname },
+    openGraph: {
+      type: 'website',
+      locale: siteConfig.locale,
+      url: pathname,
+      siteName: siteConfig.name,
+      title: `${title} | Mosqueta`,
+      description,
+      images: [{ url: image, alt: `${product.name} ${product.brand} ${product.model}` }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${title} | Mosqueta`,
+      description,
+      images: [image],
+    },
+    robots: { index: canBeIndexed, follow: canBeIndexed },
   };
 }
 
@@ -34,16 +79,60 @@ export default async function ProductPage({ params }: ProductPageProps) {
   if (!product) notFound();
 
   const formattedPrice = formatProductPrice(product.price);
+  const productUrl = absoluteUrl(`/producto/${product.slug}`);
+  const imageUrl = absoluteCatalogImage(product.image);
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: product.specifications,
+    image: [imageUrl],
+    url: productUrl,
+    brand: { '@type': 'Brand', name: product.brand },
+    mpn: product.model,
+    category: product.category,
+    color: product.color ?? undefined,
+    size: product.size ?? undefined,
+    ...(product.price !== null
+      ? {
+          offers: {
+            '@type': 'Offer',
+            url: productUrl,
+            priceCurrency: 'MXN',
+            price: product.price.toFixed(2),
+            availability: schemaAvailability[product.availability],
+            itemCondition: 'https://schema.org/NewCondition',
+          },
+        }
+      : {}),
+  };
+  const breadcrumbData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: absoluteUrl('/') },
+      { '@type': 'ListItem', position: 2, name: 'Catálogo', item: absoluteUrl('/catalogo') },
+      { '@type': 'ListItem', position: 3, name: product.name, item: productUrl },
+    ],
+  };
   const attributes = [
     { name: 'Marca', value: product.brand },
     { name: 'Modelo', value: product.model },
     product.color ? { name: 'Color', value: product.color } : null,
     product.size ? { name: 'Tamaño', value: product.size } : null,
-    { name: 'Disponibilidad', value: 'Por confirmar' },
+    { name: 'Disponibilidad', value: availabilityLabels[product.availability] },
   ].filter((item): item is { name: string; value: string } => Boolean(item));
 
   return (
     <div className="bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData).replace(/</g, '\\u003c') }}
+      />
       <nav aria-label="Breadcrumb" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <ol className="flex items-center gap-2 text-sm text-gray-500 font-inter">
           <li><Link href="/" className="hover:text-mosqueta-primary">Inicio</Link></li>
@@ -64,7 +153,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 fill
                 className="object-contain"
                 loading="eager"
+                fetchPriority="high"
                 sizes="(min-width: 1024px) 50vw, 100vw"
+                placeholder="blur"
+                blurDataURL={PRODUCT_IMAGE_BLUR_DATA_URL}
               />
             </div>
             {product.imageStatus === 'referencia' && (

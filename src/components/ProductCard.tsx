@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import type { CatalogProduct } from '@/data/products';
 import { formatProductPrice } from '@/data/products';
+import { PRODUCT_IMAGE_BLUR_DATA_URL } from '@/lib/catalog-image';
 import { StaggerItem } from './animations/Stagger';
 
 export default function ProductCard({ product, eager = false }: { product: CatalogProduct; eager?: boolean }) {
@@ -25,9 +26,12 @@ export default function ProductCard({ product, eager = false }: { product: Catal
               src={product.image}
               alt={`${product.name} ${product.brand}`}
               fill
-              className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-300"
+              className="object-contain object-center p-2 group-hover:scale-[1.02] transition-transform duration-300 sm:p-3"
               sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
               loading={eager ? 'eager' : 'lazy'}
+              fetchPriority={eager ? 'high' : 'auto'}
+              placeholder="blur"
+              blurDataURL={PRODUCT_IMAGE_BLUR_DATA_URL}
             />
           </div>
         </Link>

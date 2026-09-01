@@ -4,6 +4,7 @@ import { ArrowRight, ShoppingCart } from 'lucide-react';
 export const metadata = {
   title: 'Carrito de compras | Mosqueta',
   description: 'Revisa los productos seleccionados para tu compra.',
+  robots: { index: false, follow: false },
 };
 
 export default function CarritoPage() {

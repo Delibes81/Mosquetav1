@@ -1,12 +1,25 @@
 import CatalogBrowser from '@/components/CatalogBrowser';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { getCatalogProducts } from '@/lib/catalog';
+import type { Metadata } from 'next';
 
 export const revalidate = 300;
 
-export const metadata = {
-  title: 'Catálogo | Mosqueta',
+export const metadata: Metadata = {
+  title: 'Catálogo',
   description: 'Explora el catálogo de electrodomésticos, colchones y equipos de Mosqueta.',
+  alternates: { canonical: '/catalogo' },
+  openGraph: {
+    type: 'website',
+    url: '/catalogo',
+    title: 'Catálogo de productos Mosqueta',
+    description: 'Electrodomésticos, colchones y equipamiento para hogares y empresas en México.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Catálogo de productos Mosqueta',
+    description: 'Electrodomésticos, colchones y equipamiento para hogares y empresas en México.',
+  },
 };
 
 export default async function CatalogoPage() {
@@ -30,7 +43,16 @@ export default async function CatalogoPage() {
         </FadeIn>
       </div>
 
-      <CatalogBrowser products={catalogProducts} categories={catalogCategories} brands={catalogBrands} />
+      {catalogProducts.length > 0 ? (
+        <CatalogBrowser products={catalogProducts} categories={catalogCategories} brands={catalogBrands} />
+      ) : (
+        <section className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
+          <h2 className="font-montserrat text-2xl font-extrabold text-gray-900">Catálogo temporalmente no disponible</h2>
+          <p className="mt-3 text-gray-600">
+            Estamos actualizando la información de productos. Intenta nuevamente en unos minutos o contáctanos para recibir atención.
+          </p>
+        </section>
+      )}
     </div>
   );
 }

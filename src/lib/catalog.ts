@@ -6,6 +6,7 @@ import {
   type ProductAvailability,
   type ProductDataStatus,
 } from '@/data/products';
+import { resolveCatalogImage } from '@/lib/catalog-image';
 import { getPublicSupabaseClient } from '@/lib/supabase/public-client';
 
 interface CatalogProductRow {
@@ -51,7 +52,7 @@ function mapRow(row: CatalogProductRow): CatalogProduct {
     price: row.price_mxn === null ? null : Number(row.price_mxn),
     stock: row.stock,
     availability: row.availability,
-    image: row.image ?? localProduct?.image ?? '/products/catalog-01.jpg',
+    image: resolveCatalogImage(row.image ?? localProduct?.image),
     imageStatus: row.image_status,
     sourceRow: row.source_row,
     published: row.published,
@@ -63,7 +64,10 @@ export const getCatalogProducts = cache(async (): Promise<CatalogProduct[]> => {
   if (!usesSupabaseCatalog()) return localCatalogProducts;
 
   const supabase = getPublicSupabaseClient();
-  if (!supabase) return localCatalogProducts;
+  if (!supabase) {
+    console.error('[catalog] Supabase no está configurado para el catálogo público.');
+    return [];
+  }
 
   const { data, error } = await supabase
     .from('catalog_products_public')
@@ -71,8 +75,8 @@ export const getCatalogProducts = cache(async (): Promise<CatalogProduct[]> => {
     .order('sort_order', { ascending: true });
 
   if (error) {
-    console.warn(`[catalog] Supabase no disponible (${error.code}); usando respaldo local.`);
-    return localCatalogProducts;
+    console.error(`[catalog] No se pudo consultar Supabase (${error.code}).`);
+    return [];
   }
 
   return (data as CatalogProductRow[]).map(mapRow);
@@ -82,7 +86,10 @@ export const getCatalogProductBySlug = cache(async (slug: string): Promise<Catal
   if (!usesSupabaseCatalog()) return getLocalProductBySlug(slug);
 
   const supabase = getPublicSupabaseClient();
-  if (!supabase) return getLocalProductBySlug(slug);
+  if (!supabase) {
+    console.error('[catalog] Supabase no está configurado para la ficha pública.');
+    return undefined;
+  }
 
   const { data, error } = await supabase
     .from('catalog_products_public')
@@ -91,8 +98,8 @@ export const getCatalogProductBySlug = cache(async (slug: string): Promise<Catal
     .maybeSingle();
 
   if (error) {
-    console.warn(`[catalog] Supabase no disponible (${error.code}); usando respaldo local.`);
-    return getLocalProductBySlug(slug);
+    console.error(`[catalog] No se pudo consultar Supabase (${error.code}).`);
+    return undefined;
   }
 
   return data ? mapRow(data as CatalogProductRow) : undefined;
