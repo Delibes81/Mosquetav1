@@ -14,8 +14,9 @@ Este documento separa lo terminado, lo pospuesto por decisión del equipo y la i
 - Galería administrativa: visualización, carga múltiple, WebP, orden, portada, texto alternativo, reemplazo y eliminación implementados.
 - Galería pública: imágenes ordenadas, miniaturas, navegación móvil y vista ampliada implementadas.
 - Carrito: persistencia local, cantidades, eliminación, contador y totales implementados.
-- Checkout de invitado en modo revisión: contacto, entrega, método de pago y resumen implementados sin envío ni almacenamiento de datos.
-- Precios temporales para QA: pantallas de 55″ ($1,000), 65″ ($1,500) y 75″ ($2,000).
+- Checkout de invitado: contacto, entrega, resumen, redirección segura a Stripe y confirmación de pago implementados localmente; publicación pendiente.
+- Stripe en modo de prueba: cuenta, claves, endpoint y secreto de webhook preparados por el equipo; integración técnica compilada localmente.
+- Precios temporales para QA: pantallas de 55″ ($30,000), 65″ ($40,000) y 75″ ($50,000).
 - Despliegue de producción en Vercel: activo.
 
 ## Puntos que estamos posponiendo
@@ -28,8 +29,10 @@ Este documento separa lo terminado, lo pospuesto por decisión del equipo y la i
 | Prueba integral del CRUD | Todavía no se harán pruebas destructivas o de datos reales | Definir producto de prueba y criterios de aceptación |
 | Carga y revisión final de precios | Los precios serán definidos por el equipo/cliente | Recibir archivo definitivo de precios y reglas de IVA |
 | Sustitución de precios temporales de pantallas | Los valores actuales existen únicamente para probar el carrito | Reemplazarlos antes de conectar el dominio final |
-| Activación del checkout | La interfaz no guarda ni envía datos personales | Recibir aviso de privacidad, destinatario de pedidos y reglas comerciales finales |
-| Conexión de Stripe | Stripe fue confirmado como pasarela principal, pero aún no está conectado | Recibir acceso a la cuenta, claves de prueba/producción y definir métodos, comisiones, MSI y reembolsos |
+| Prueba integral del pago con Stripe | El equipo decidió posponer las pruebas manuales | Publicar la integración y ejecutar una compra de prueba con tarjeta `4242 4242 4242 4242` |
+| Persistencia y administración de pedidos | La primera conexión usa Stripe como registro de pago y todavía no crea pedidos en Supabase | Diseñar tablas de pedidos, estados e historial antes de operar ventas reales |
+| Activación comercial del checkout | La integración de prueba está lista, pero faltan reglas y documentos finales | Recibir aviso de privacidad, destinatario de pedidos, políticas y cobertura definitiva |
+| Activación de Stripe en producción | Actualmente se usarán claves y webhook de prueba | Completar validación de cuenta, definir métodos, comisiones, MSI y reembolsos; después cambiar a claves `live` |
 | Sustitución de imágenes de referencia | Faltan imágenes finales del cliente | Recibir y validar fotografías finales |
 | QA público completo | Debe hacerse con catálogo, precios e imágenes finales | Completar contenido y después probar navegación, SEO y responsive |
 
@@ -105,4 +108,4 @@ Decisiones confirmadas: compra como invitado para la primera versión, cobertura
 
 ## Próximo bloque recomendado
 
-El siguiente bloque es solicitar y cerrar las reglas que activarán el checkout: cobertura exacta, entrega, aviso de privacidad, destinatario de pedidos y acceso a Stripe. Después se podrá crear el registro de pedidos en Supabase, notificaciones, webhooks y conexión de pago. La revisión UX/UI integral se hará sobre el recorrido completo.
+El siguiente bloque es publicar la integración de Stripe y ejecutar, cuando el equipo lo autorice, una compra completa en modo de prueba. Después se debe crear el registro de pedidos en Supabase, las notificaciones y el seguimiento administrativo. Antes de aceptar pagos reales se cerrarán cobertura, entrega, aviso de privacidad, destinatario de pedidos, políticas comerciales y claves de producción. La revisión UX/UI integral se hará sobre el recorrido completo.

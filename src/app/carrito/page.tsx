@@ -146,7 +146,7 @@ export default function CarritoPage() {
             >
               Continuar al checkout <ArrowRight className="h-5 w-5" />
             </Link>
-            <p className="mt-2 text-center text-xs text-gray-500">Podrás revisar los datos de entrega; todavía no se enviará ni guardará información.</p>
+            <p className="mt-2 text-center text-xs text-gray-500">Completarás la entrega y pasarás al pago seguro de Stripe.</p>
             <Link href="/catalogo" className="mt-5 flex items-center justify-center gap-2 text-sm font-bold text-mosqueta-primary hover:underline">
               Seguir agregando productos <ArrowRight className="h-4 w-4" />
             </Link>

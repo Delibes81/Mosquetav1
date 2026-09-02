@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { CartItem, CartProduct } from './cart-types';
 
-const CART_STORAGE_KEY = 'mosqueta-cart-v1';
+const CART_STORAGE_KEY = 'mosqueta-cart-v2';
 const DEFAULT_MAX_QUANTITY = 99;
 
 interface CartContextValue {
@@ -14,6 +14,7 @@ interface CartContextValue {
   addItem: (product: CartProduct) => void;
   updateQuantity: (id: string, quantity: number) => void;
   removeItem: (id: string) => void;
+  clearCart: () => void;
 }
 
 const CartContext = createContext<CartContextValue | null>(null);
@@ -100,6 +101,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     },
     removeItem(id) {
       setItems((currentItems) => currentItems.filter((item) => item.id !== id));
+    },
+    clearCart() {
+      setItems([]);
     },
   }), [hydrated, items]);
 

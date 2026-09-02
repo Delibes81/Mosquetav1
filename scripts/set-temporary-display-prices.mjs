@@ -23,9 +23,9 @@ if (!supabaseUrl || !secretKey) {
 }
 
 const priceBySize = new Map([
-  [55, 1000],
-  [65, 1500],
-  [75, 2000],
+  [55, 30000],
+  [65, 40000],
+  [75, 50000],
 ]);
 
 const supabase = createClient(supabaseUrl, secretKey, {
