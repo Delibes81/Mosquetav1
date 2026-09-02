@@ -5,6 +5,7 @@ import { getCatalogProducts } from '@/lib/catalog';
 import { absoluteCatalogImage } from '@/lib/catalog-image';
 import { absoluteUrl } from '@/lib/site';
 import { getStripeClient } from '@/lib/stripe/server';
+import { getSupabaseServiceClient } from '@/lib/supabase/service';
 
 export const runtime = 'nodejs';
 
@@ -41,6 +42,16 @@ export async function POST(request: Request) {
   const productsById = new Map(catalog.map((product) => [product.id, product]));
 
   const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
+  const orderItems: Array<{
+    variant_id: string;
+    product_slug: string;
+    product_name: string;
+    brand: string;
+    model: string;
+    image_url: string;
+    unit_price_mxn: number;
+    quantity: number;
+  }> = [];
 
   for (const item of items) {
     const product = productsById.get(item.id);
@@ -57,6 +68,8 @@ export async function POST(request: Request) {
       return errorResponse('Uno de los productos tiene un precio inválido.', 409);
     }
 
+    const imageUrl = absoluteCatalogImage(product.image);
+
     lineItems.push({
       quantity: item.quantity,
       price_data: {
@@ -65,7 +78,7 @@ export async function POST(request: Request) {
         product_data: {
           name: `${product.name} ${product.brand}`.trim().slice(0, 127),
           description: product.model ? `Modelo ${product.model}`.slice(0, 255) : undefined,
-          images: [absoluteCatalogImage(product.image)],
+          images: [imageUrl],
           metadata: {
             catalog_variant_id: product.id,
             slug: product.slug,
@@ -73,15 +86,28 @@ export async function POST(request: Request) {
         },
       },
     });
+
+    orderItems.push({
+      variant_id: product.id,
+      product_slug: product.slug,
+      product_name: product.name,
+      brand: product.brand,
+      model: product.model,
+      image_url: imageUrl,
+      unit_price_mxn: product.price,
+      quantity: item.quantity,
+    });
   }
 
   try {
     const stripe = getStripeClient();
+    const orderId = crypto.randomUUID();
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       locale: 'es',
       payment_method_types: ['card'],
       customer_email: customer.email,
+      client_reference_id: orderId,
       line_items: lineItems,
       success_url: absoluteUrl('/checkout/exito?session_id={CHECKOUT_SESSION_ID}'),
       cancel_url: absoluteUrl('/checkout?cancelado=1'),
@@ -103,6 +129,7 @@ export async function POST(request: Request) {
         },
         metadata: {
           source: 'mosqueta-web',
+          order_id: orderId,
         },
       },
       shipping_options: [{
@@ -119,12 +146,43 @@ export async function POST(request: Request) {
       },
       metadata: {
         source: 'mosqueta-web',
+        order_id: orderId,
         cart_item_count: String(items.reduce((total, item) => total + item.quantity, 0)),
       },
     });
 
     if (!session.url) {
       return errorResponse('Stripe no generó una liga de pago.', 502);
+    }
+
+    const supabase = getSupabaseServiceClient();
+    const { error: orderError } = await supabase.rpc('create_checkout_order', {
+      p_order_id: orderId,
+      p_stripe_checkout_session_id: session.id,
+      p_currency: 'mxn',
+      p_shipping_mxn: 0,
+      p_customer_name: customer.fullName,
+      p_customer_email: customer.email,
+      p_customer_phone: customer.phone,
+      p_address_line1: customer.streetAddress,
+      p_address_line2: '',
+      p_neighborhood: customer.neighborhood,
+      p_city: customer.municipality,
+      p_state: customer.region,
+      p_postal_code: customer.postalCode,
+      p_country: 'MX',
+      p_delivery_notes: customer.deliveryNotes,
+      p_items: orderItems,
+    });
+
+    if (orderError) {
+      console.error(`[orders] No se pudo registrar el pedido (${orderError.code}).`);
+      try {
+        await stripe.checkout.sessions.expire(session.id);
+      } catch {
+        console.error('[stripe] No se pudo expirar la sesión sin pedido.');
+      }
+      return errorResponse('No pudimos registrar el pedido. Intenta nuevamente.', 502);
     }
 
     return NextResponse.json({ url: session.url });

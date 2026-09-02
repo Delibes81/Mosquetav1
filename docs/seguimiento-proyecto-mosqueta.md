@@ -14,8 +14,10 @@ Este documento separa lo terminado, lo pospuesto por decisión del equipo y la i
 - Galería administrativa: visualización, carga múltiple, WebP, orden, portada, texto alternativo, reemplazo y eliminación implementados.
 - Galería pública: imágenes ordenadas, miniaturas, navegación móvil y vista ampliada implementadas.
 - Carrito: persistencia local, cantidades, eliminación, contador y totales implementados.
-- Checkout de invitado: contacto, entrega, resumen, redirección segura a Stripe y confirmación de pago implementados localmente; publicación pendiente.
-- Stripe en modo de prueba: cuenta, claves, endpoint y secreto de webhook preparados por el equipo; integración técnica compilada localmente.
+- Checkout de invitado: contacto, entrega, resumen, redirección segura a Stripe y confirmación de pago implementados y publicados.
+- Stripe en modo de prueba: compra exitosa por $30,000 realizada por el equipo; validación visual del retorno completada.
+- Gestor administrativo de pedidos: listado, filtros, métricas, detalle, historial y estados operativos implementados localmente; publicación pendiente.
+- Base de pedidos en Supabase: tablas, historial, idempotencia del webhook y políticas RLS aplicadas y verificadas.
 - Precios temporales para QA: pantallas de 55″ ($30,000), 65″ ($40,000) y 75″ ($50,000).
 - Despliegue de producción en Vercel: activo.
 
@@ -29,8 +31,8 @@ Este documento separa lo terminado, lo pospuesto por decisión del equipo y la i
 | Prueba integral del CRUD | Todavía no se harán pruebas destructivas o de datos reales | Definir producto de prueba y criterios de aceptación |
 | Carga y revisión final de precios | Los precios serán definidos por el equipo/cliente | Recibir archivo definitivo de precios y reglas de IVA |
 | Sustitución de precios temporales de pantallas | Los valores actuales existen únicamente para probar el carrito | Reemplazarlos antes de conectar el dominio final |
-| Prueba integral del pago con Stripe | El equipo decidió posponer las pruebas manuales | Publicar la integración y ejecutar una compra de prueba con tarjeta `4242 4242 4242 4242` |
-| Persistencia y administración de pedidos | La primera conexión usa Stripe como registro de pago y todavía no crea pedidos en Supabase | Diseñar tablas de pedidos, estados e historial antes de operar ventas reales |
+| Validación del webhook de Stripe | El retorno del pago ya se probó, pero falta confirmar la entrega HTTP 200 en Workbench | Revisar o reenviar `checkout.session.completed` después de publicar la persistencia |
+| Prueba integral del gestor de pedidos | El gestor está implementado, pero todavía no recibe pedidos reales | Aplicar la migración, publicar y ejecutar una segunda compra de prueba |
 | Activación comercial del checkout | La integración de prueba está lista, pero faltan reglas y documentos finales | Recibir aviso de privacidad, destinatario de pedidos, políticas y cobertura definitiva |
 | Activación de Stripe en producción | Actualmente se usarán claves y webhook de prueba | Completar validación de cuenta, definir métodos, comisiones, MSI y reembolsos; después cambiar a claves `live` |
 | Sustitución de imágenes de referencia | Faltan imágenes finales del cliente | Recibir y validar fotografías finales |
@@ -108,4 +110,4 @@ Decisiones confirmadas: compra como invitado para la primera versión, cobertura
 
 ## Próximo bloque recomendado
 
-El siguiente bloque es publicar la integración de Stripe y ejecutar, cuando el equipo lo autorice, una compra completa en modo de prueba. Después se debe crear el registro de pedidos en Supabase, las notificaciones y el seguimiento administrativo. Antes de aceptar pagos reales se cerrarán cobertura, entrega, aviso de privacidad, destinatario de pedidos, políticas comerciales y claves de producción. La revisión UX/UI integral se hará sobre el recorrido completo.
+El siguiente bloque es publicar el gestor administrativo. Después se ejecutará una segunda compra de prueba para comprobar creación del pedido, confirmación del webhook, visualización en el panel y cambio de estado. Antes de aceptar pagos reales se cerrarán cobertura, entrega, aviso de privacidad, destinatario de pedidos, políticas comerciales y claves de producción. La revisión UX/UI integral se hará sobre el recorrido completo.

@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { ExternalLink, LogOut, PackageSearch, ShieldCheck } from 'lucide-react';
+import { LogOut, ShieldCheck } from 'lucide-react';
 import { logoutAdminAction } from '@/app/admin/actions';
+import AdminNavigation from '@/components/admin/AdminNavigation';
 import type { AdminSession } from '@/lib/admin/catalog-types';
 
 export default function AdminShell({
@@ -23,23 +23,7 @@ export default function AdminShell({
           </span>
         </div>
 
-        <nav className="mt-6 flex gap-2 overflow-x-auto lg:mt-10 lg:block lg:space-y-2">
-          <Link
-            href="/admin/productos"
-            className="flex min-w-max items-center gap-3 rounded-xl bg-white/10 px-4 py-3 text-sm font-bold transition hover:bg-white/15"
-          >
-            <PackageSearch size={19} />
-            Productos
-          </Link>
-          <Link
-            href="/catalogo"
-            target="_blank"
-            className="flex min-w-max items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-slate-300 transition hover:bg-white/10 hover:text-white"
-          >
-            <ExternalLink size={18} />
-            Ver tienda
-          </Link>
-        </nav>
+        <AdminNavigation />
 
         <div className="mt-6 border-t border-white/10 pt-5 lg:mt-auto lg:pt-6">
           <div className="mb-4 flex items-start gap-3 text-sm text-slate-300">
