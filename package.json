@@ -9,6 +9,8 @@
     "lint": "eslint",
     "catalog:import": "node scripts/import-catalog-to-supabase.mjs",
     "catalog:import:dry": "node scripts/import-catalog-to-supabase.mjs --dry-run",
+    "catalog:prices:displays": "node scripts/set-temporary-display-prices.mjs",
+    "catalog:prices:displays:apply": "node scripts/set-temporary-display-prices.mjs --apply",
     "admin:grant": "node scripts/grant-admin-role.mjs"
   },
   "dependencies": {

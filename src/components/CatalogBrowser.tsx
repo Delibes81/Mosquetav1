@@ -100,7 +100,11 @@ export default function CatalogBrowser({ products, categories, brands }: Catalog
           Mostrando <span className="font-semibold text-gray-900">{visibleProducts.length}</span> de{' '}
           <span className="font-semibold text-gray-900">{filteredProducts.length}</span> productos
         </p>
-        <p className="text-sm text-gray-500">Precios y existencias pendientes de captura</p>
+        <p className="text-sm text-gray-500">
+          {products.some((product) => product.price !== null)
+            ? 'Algunos precios y existencias permanecen por confirmar'
+            : 'Precios y existencias pendientes de captura'}
+        </p>
       </div>
 
       {visibleProducts.length > 0 ? (

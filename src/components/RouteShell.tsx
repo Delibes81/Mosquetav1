@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import TopBanner from '@/components/TopBanner';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { CartProvider } from '@/features/cart/CartProvider';
 
 export default function RouteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -13,11 +14,11 @@ export default function RouteShell({ children }: { children: React.ReactNode }) 
   }
 
   return (
-    <>
+    <CartProvider>
       <TopBanner />
       <Navbar />
       <main className="flex-1">{children}</main>
       <Footer />
-    </>
+    </CartProvider>
   );
 }

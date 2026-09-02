@@ -7,6 +7,7 @@ import { formatProductPrice, type ProductAvailability } from '@/data/products';
 import { absoluteCatalogImage } from '@/lib/catalog-image';
 import { getCatalogProductBySlug } from '@/lib/catalog';
 import { absoluteUrl, siteConfig } from '@/lib/site';
+import AddToCartButton from '@/features/cart/AddToCartButton';
 
 export const revalidate = 300;
 
@@ -164,20 +165,38 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 {formattedPrice ?? 'Por confirmar'}
               </p>
               <p className="mt-2 text-sm text-gray-600">
-                Estamos incorporando precios y existencias al catálogo. Puedes solicitar disponibilidad de este modelo.
+                {product.price !== null
+                  ? 'Precio temporal para validar el carrito. Existencia, entrega y venta final sujetas a confirmación.'
+                  : 'Estamos incorporando precios y existencias al catálogo. Puedes solicitar disponibilidad de este modelo.'}
               </p>
             </div>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              {product.price !== null && product.availability !== 'agotado' && product.stock !== 0 ? (
+                <AddToCartButton
+                  product={{
+                    id: product.id,
+                    slug: product.slug,
+                    name: product.name,
+                    brand: product.brand,
+                    model: product.model,
+                    image: product.image,
+                    price: product.price,
+                    stock: product.stock,
+                    availability: product.availability,
+                  }}
+                  className="w-full"
+                />
+              ) : null}
               <Link
                 href="/contacto"
-                className="flex-1 bg-mosqueta-primary rounded-md py-3 px-6 flex items-center justify-center gap-2 text-base font-bold text-white hover:bg-[#b0164e] transition-colors shadow-sm"
+                className={`${product.price !== null ? 'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50' : 'bg-mosqueta-primary text-white hover:bg-[#b0164e] shadow-sm'} flex rounded-md py-3 px-6 items-center justify-center gap-2 text-base font-bold transition-colors`}
               >
                 <MessageCircle className="w-5 h-5" /> Consultar producto
               </Link>
               <Link
                 href="/catalogo"
-                className="flex-1 bg-white border border-gray-300 rounded-md py-3 px-6 flex items-center justify-center text-base font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+                className="flex rounded-md border border-gray-300 bg-white py-3 px-6 items-center justify-center text-base font-semibold text-gray-700 hover:bg-gray-50 transition-colors sm:col-span-2"
               >
                 Volver al catálogo
               </Link>

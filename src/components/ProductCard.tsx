@@ -5,6 +5,7 @@ import type { CatalogProduct } from '@/data/products';
 import { formatProductPrice } from '@/data/products';
 import { PRODUCT_IMAGE_BLUR_DATA_URL } from '@/lib/catalog-image';
 import { StaggerItem } from './animations/Stagger';
+import AddToCartButton from '@/features/cart/AddToCartButton';
 
 export default function ProductCard({ product, eager = false }: { product: CatalogProduct; eager?: boolean }) {
   const formattedPrice = formatProductPrice(product.price);
@@ -48,12 +49,31 @@ export default function ProductCard({ product, eager = false }: { product: Catal
           <p className={`text-sm sm:text-xl font-bold font-inter ${formattedPrice ? 'text-gray-900' : 'text-mosqueta-primary'}`}>
             {formattedPrice ?? 'Precio por confirmar'}
           </p>
-          <Link
-            href={`/producto/${product.slug}`}
-            className="mt-3 sm:mt-4 w-full bg-mosqueta-primary text-white font-semibold py-2 px-2 sm:py-3 sm:px-4 rounded flex items-center justify-center gap-2 hover:bg-[#b0164e] transition-colors active:scale-[0.98] text-xs sm:text-base"
-          >
-            Ver detalles <ArrowRight className="w-4 h-4" />
-          </Link>
+          <div className="mt-3 grid gap-2 sm:mt-4">
+            {product.price !== null && product.availability !== 'agotado' && product.stock !== 0 ? (
+              <AddToCartButton
+                compact
+                product={{
+                  id: product.id,
+                  slug: product.slug,
+                  name: product.name,
+                  brand: product.brand,
+                  model: product.model,
+                  image: product.image,
+                  price: product.price,
+                  stock: product.stock,
+                  availability: product.availability,
+                }}
+                className="w-full"
+              />
+            ) : null}
+            <Link
+              href={`/producto/${product.slug}`}
+              className={`${product.price !== null ? 'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50' : 'bg-mosqueta-primary text-white hover:bg-[#b0164e]'} flex w-full items-center justify-center gap-2 rounded px-2 py-2 text-xs font-semibold transition-colors active:scale-[0.98] sm:px-4 sm:py-3 sm:text-base`}
+            >
+              Ver detalles <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
       </article>
     </StaggerItem>

@@ -4,9 +4,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Search, ShoppingCart, Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { useCart } from '@/features/cart/CartProvider';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { itemCount } = useCart();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -44,8 +46,18 @@ export default function Navbar() {
             <button className="text-white/90 hover:text-white transition-colors hidden sm:block" aria-label="Buscar">
               <Search className="w-5 h-5" />
             </button>
-            <Link href="/carrito" className="text-white/90 hover:text-white transition-colors relative" aria-label="Carrito" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link
+              href="/carrito"
+              className="relative text-white/90 transition-colors hover:text-white"
+              aria-label={itemCount > 0 ? `Carrito con ${itemCount} ${itemCount === 1 ? 'producto' : 'productos'}` : 'Carrito'}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               <ShoppingCart className="w-6 h-6" />
+              {itemCount > 0 ? (
+                <span className="absolute -right-2.5 -top-2.5 flex min-h-5 min-w-5 items-center justify-center rounded-full bg-white px-1 text-[10px] font-extrabold leading-none text-mosqueta-primary shadow-sm">
+                  {itemCount > 99 ? '99+' : itemCount}
+                </span>
+              ) : null}
             </Link>
             <button 
               className="text-white/90 hover:text-white md:hidden" 

@@ -13,6 +13,8 @@ Este documento separa lo terminado, lo pospuesto por decisión del equipo y la i
 - Alta, edición, archivo, precios, inventario y publicación: implementados.
 - Galería administrativa: visualización, carga múltiple, WebP, orden, portada, texto alternativo, reemplazo y eliminación implementados.
 - Galería pública: imágenes ordenadas, miniaturas, navegación móvil y vista ampliada implementadas.
+- Carrito: persistencia local, cantidades, eliminación, contador y totales implementados.
+- Precios temporales para QA: pantallas de 55″ ($1,000), 65″ ($1,500) y 75″ ($2,000).
 - Despliegue de producción en Vercel: activo.
 
 ## Puntos que estamos posponiendo
@@ -24,6 +26,7 @@ Este documento separa lo terminado, lo pospuesto por decisión del equipo y la i
 | Revisión UX/UI completa del CRUD | Se realizará cuando termine la funcionalidad administrativa | Ejecutar en escritorio y móvil con datos reales |
 | Prueba integral del CRUD | Todavía no se harán pruebas destructivas o de datos reales | Definir producto de prueba y criterios de aceptación |
 | Carga y revisión final de precios | Los precios serán definidos por el equipo/cliente | Recibir archivo definitivo de precios y reglas de IVA |
+| Sustitución de precios temporales de pantallas | Los valores actuales existen únicamente para probar el carrito | Reemplazarlos antes de conectar el dominio final |
 | Sustitución de imágenes de referencia | Faltan imágenes finales del cliente | Recibir y validar fotografías finales |
 | QA público completo | Debe hacerse con catálogo, precios e imágenes finales | Completar contenido y después probar navegación, SEO y responsive |
 
@@ -97,4 +100,4 @@ Este documento separa lo terminado, lo pospuesto por decisión del equipo y la i
 
 ## Próximo bloque recomendado
 
-El siguiente bloque es revisar la experiencia UX/UI del administrador y del catálogo público. Las pruebas con imágenes reales y las pruebas destructivas continúan pospuestas hasta definir un SKU exclusivo para QA.
+Después del carrito, el siguiente bloque funcional es definir checkout, entrega y métodos de pago. La revisión UX/UI integral se hará sobre el recorrido completo; las pruebas con imágenes reales y las pruebas destructivas continúan pospuestas hasta definir un SKU exclusivo para QA.
