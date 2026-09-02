@@ -127,20 +127,20 @@ export default function CheckoutPage() {
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-pink-50 font-extrabold text-mosqueta-primary">3</span>
                 <div>
                   <h2 className="font-montserrat text-2xl font-extrabold text-gray-900">Método de pago</h2>
-                  <p className="mt-1 text-sm text-gray-600">Pendiente de confirmación comercial y conexión con la pasarela.</p>
+                  <p className="mt-1 text-sm text-gray-600">Stripe será la pasarela principal; la conexión todavía está pendiente.</p>
                 </div>
               </div>
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 <div className="rounded-lg border-2 border-mosqueta-primary bg-pink-50 p-4">
                   <CreditCard className="h-6 w-6 text-mosqueta-primary" />
-                  <p className="mt-3 font-bold text-gray-900">Transferencia bancaria</p>
-                  <p className="mt-1 text-xs leading-relaxed text-gray-600">Canal utilizado actualmente; faltan cuenta receptora y reglas de confirmación.</p>
+                  <p className="mt-3 font-bold text-gray-900">Pago seguro con Stripe</p>
+                  <p className="mt-1 text-xs leading-relaxed text-gray-600">Pasarela principal confirmada; faltan la cuenta, las claves y las reglas de cobro.</p>
                 </div>
-                <div className="rounded-lg border border-dashed border-gray-300 bg-gray-50 p-4 text-gray-500">
-                  <LockKeyhole className="h-6 w-6" />
-                  <p className="mt-3 font-bold">Tarjeta bancaria</p>
-                  <p className="mt-1 text-xs leading-relaxed">Pendiente de elegir BBVA/Openpay u otra pasarela.</p>
+                <div className="rounded-lg border border-gray-300 bg-white p-4 text-gray-600">
+                  <LockKeyhole className="h-6 w-6 text-gray-500" />
+                  <p className="mt-3 font-bold text-gray-900">Transferencia bancaria</p>
+                  <p className="mt-1 text-xs leading-relaxed">Alternativa secundaria pendiente de definir cuenta y proceso de confirmación.</p>
                 </div>
               </div>
             </section>

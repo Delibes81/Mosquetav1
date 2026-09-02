@@ -29,7 +29,7 @@ Este documento separa lo terminado, lo pospuesto por decisión del equipo y la i
 | Carga y revisión final de precios | Los precios serán definidos por el equipo/cliente | Recibir archivo definitivo de precios y reglas de IVA |
 | Sustitución de precios temporales de pantallas | Los valores actuales existen únicamente para probar el carrito | Reemplazarlos antes de conectar el dominio final |
 | Activación del checkout | La interfaz no guarda ni envía datos personales | Recibir aviso de privacidad, destinatario de pedidos y reglas comerciales finales |
-| Conexión de pasarela de pago | BBVA/Openpay estaba en evaluación y no existe decisión final documentada | Cliente confirma proveedor, cuenta, comisiones, tarjetas, transferencias y meses sin intereses |
+| Conexión de Stripe | Stripe fue confirmado como pasarela principal, pero aún no está conectado | Recibir acceso a la cuenta, claves de prueba/producción y definir métodos, comisiones, MSI y reembolsos |
 | Sustitución de imágenes de referencia | Faltan imágenes finales del cliente | Recibir y validar fotografías finales |
 | QA público completo | Debe hacerse con catálogo, precios e imágenes finales | Completar contenido y después probar navegación, SEO y responsive |
 
@@ -68,13 +68,13 @@ Este documento separa lo terminado, lo pospuesto por decisión del equipo y la i
 
 ### 4. Operación comercial
 
-Decisiones recuperadas de las reuniones: compra como invitado para la primera versión, cobertura inicial en CDMX y área metropolitana, transferencia como canal actual e intención de incluir la entrega en el precio.
+Decisiones confirmadas: compra como invitado para la primera versión, cobertura inicial en CDMX y área metropolitana, intención de incluir la entrega en el precio y Stripe como pasarela principal. La transferencia quedará como alternativa secundaria.
 
 - Lista exacta de alcaldías, municipios y códigos postales con cobertura.
 - Confirmación final de cuándo la entrega está incluida y qué excepciones tendrán costo.
 - Tiempos estimados de entrega.
 - Opciones de recolección, si existen.
-- Proveedor definitivo de pagos y métodos que se aceptarán.
+- Acceso a la cuenta de Stripe y definición de tarjetas, meses sin intereses y transferencia secundaria.
 - Proceso para productos sobre pedido.
 - Política de cancelaciones, devoluciones y cambios.
 - Garantías por producto o marca.
@@ -105,4 +105,4 @@ Decisiones recuperadas de las reuniones: compra como invitado para la primera ve
 
 ## Próximo bloque recomendado
 
-El siguiente bloque es solicitar y cerrar las reglas que activarán el checkout: cobertura exacta, entrega, aviso de privacidad, destinatario de pedidos y proveedor de pagos. Después se podrá crear el registro de pedidos en Supabase, notificaciones y conexión de pago. La revisión UX/UI integral se hará sobre el recorrido completo.
+El siguiente bloque es solicitar y cerrar las reglas que activarán el checkout: cobertura exacta, entrega, aviso de privacidad, destinatario de pedidos y acceso a Stripe. Después se podrá crear el registro de pedidos en Supabase, notificaciones, webhooks y conexión de pago. La revisión UX/UI integral se hará sobre el recorrido completo.
