@@ -1,6 +1,6 @@
 # Seguimiento del proyecto Mosqueta
 
-Última actualización: 31 de agosto de 2026.
+Última actualización: 1 de septiembre de 2026.
 
 Este documento separa lo terminado, lo pospuesto por decisión del equipo y la información que todavía debe solicitarse al cliente. Debe actualizarse después de cada bloque de trabajo.
 
@@ -12,6 +12,7 @@ Este documento separa lo terminado, lo pospuesto por decisión del equipo y la i
 - Panel administrativo de productos: implementado.
 - Alta, edición, archivo, precios, inventario y publicación: implementados.
 - Galería administrativa: visualización, carga múltiple, WebP, orden, portada, texto alternativo, reemplazo y eliminación implementados.
+- Galería pública: imágenes ordenadas, miniaturas, navegación móvil y vista ampliada implementadas.
 - Despliegue de producción en Vercel: activo.
 
 ## Puntos que estamos posponiendo
@@ -20,7 +21,6 @@ Este documento separa lo terminado, lo pospuesto por decisión del equipo y la i
 | --- | --- | --- |
 | Prueba real de carga con 2 o 3 imágenes | El equipo decidió no hacer pruebas todavía | Contar con imágenes finales autorizadas y seleccionar un producto de prueba |
 | Prueba real de orden y cambio de portada | Depende de tener varias imágenes reales cargadas | Realizar junto con la prueba de carga |
-| Galería múltiple en la ficha pública | Se decidió avanzar primero con el CRUD administrativo de imágenes | Retomar después de validar imágenes finales |
 | Revisión UX/UI completa del CRUD | Se realizará cuando termine la funcionalidad administrativa | Ejecutar en escritorio y móvil con datos reales |
 | Prueba integral del CRUD | Todavía no se harán pruebas destructivas o de datos reales | Definir producto de prueba y criterios de aceptación |
 | Carga y revisión final de precios | Los precios serán definidos por el equipo/cliente | Recibir archivo definitivo de precios y reglas de IVA |
@@ -97,4 +97,4 @@ Este documento separa lo terminado, lo pospuesto por decisión del equipo y la i
 
 ## Próximo bloque recomendado
 
-Después de terminar el CRUD administrativo de imágenes, retomar la galería múltiple en la ficha pública y luego ejecutar la revisión UX/UI y las pruebas integrales que están registradas como pospuestas.
+El siguiente bloque es revisar la experiencia UX/UI del administrador y del catálogo público. Las pruebas con imágenes reales y las pruebas destructivas continúan pospuestas hasta definir un SKU exclusivo para QA.

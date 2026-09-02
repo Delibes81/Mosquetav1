@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ChevronRight, FileText, MessageCircle, Truck } from 'lucide-react';
+import ProductImageGallery from '@/components/ProductImageGallery';
 import { formatProductPrice, type ProductAvailability } from '@/data/products';
-import { absoluteCatalogImage, PRODUCT_IMAGE_BLUR_DATA_URL } from '@/lib/catalog-image';
+import { absoluteCatalogImage } from '@/lib/catalog-image';
 import { getCatalogProductBySlug } from '@/lib/catalog';
 import { absoluteUrl, siteConfig } from '@/lib/site';
 
@@ -80,13 +80,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   const formattedPrice = formatProductPrice(product.price);
   const productUrl = absoluteUrl(`/producto/${product.slug}`);
-  const imageUrl = absoluteCatalogImage(product.image);
+  const galleryImageUrls = product.gallery.map((image) => absoluteCatalogImage(image.url));
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.name,
     description: product.specifications,
-    image: [imageUrl],
+    image: galleryImageUrls,
     url: productUrl,
     brand: { '@type': 'Brand', name: product.brand },
     mpn: product.model,
@@ -146,24 +146,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="lg:grid lg:grid-cols-2 lg:gap-x-12 lg:items-start">
           <div>
-            <div className="relative bg-[#e9ecf2] rounded-xl overflow-hidden min-h-[440px] md:min-h-[620px] border border-gray-200">
-              <Image
-                src={product.image}
-                alt={`${product.name} ${product.brand}`}
-                fill
-                className="object-contain"
-                loading="eager"
-                fetchPriority="high"
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                placeholder="blur"
-                blurDataURL={PRODUCT_IMAGE_BLUR_DATA_URL}
-              />
-            </div>
-            {product.imageStatus === 'referencia' && (
-              <p className="mt-3 text-xs text-gray-500 text-center">
-                Imagen tomada del catálogo recibido. Se reemplazará por la fotografía final del SKU.
-              </p>
-            )}
+            <ProductImageGallery images={product.gallery} productName={product.name} />
           </div>
 
           <div className="mt-10 sm:mt-16 lg:mt-0">
