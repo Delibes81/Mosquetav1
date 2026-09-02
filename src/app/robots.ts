@@ -6,10 +6,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/admin/', '/carrito'],
+      disallow: ['/admin/', '/carrito', '/checkout'],
     },
     sitemap: absoluteUrl('/sitemap.xml'),
     host: siteConfig.url.origin,
   };
 }
-

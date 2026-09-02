@@ -4,13 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Minus, Plus, ShoppingCart, Trash2 } from 'lucide-react';
 import { useCart } from '@/features/cart/CartProvider';
-
-function formatPrice(value: number) {
-  return new Intl.NumberFormat('es-MX', {
-    style: 'currency',
-    currency: 'MXN',
-  }).format(value);
-}
+import { formatMxn } from '@/lib/currency';
 
 const availabilityLabels = {
   'por-confirmar': 'Disponibilidad por confirmar',
@@ -116,8 +110,8 @@ export default function CarritoPage() {
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-xs text-gray-500">{formatPrice(item.price)} c/u</p>
-                      <p className="mt-1 text-xl font-extrabold text-gray-900">{formatPrice(item.price * item.quantity)}</p>
+                      <p className="text-xs text-gray-500">{formatMxn(item.price)} c/u</p>
+                      <p className="mt-1 text-xl font-extrabold text-gray-900">{formatMxn(item.price * item.quantity)}</p>
                     </div>
                   </div>
                 </div>
@@ -130,7 +124,7 @@ export default function CarritoPage() {
             <dl className="mt-6 space-y-4 text-sm">
               <div className="flex justify-between gap-4 text-gray-600">
                 <dt>Subtotal</dt>
-                <dd className="font-semibold text-gray-900">{formatPrice(total)}</dd>
+                <dd className="font-semibold text-gray-900">{formatMxn(total)}</dd>
               </div>
               <div className="flex justify-between gap-4 text-gray-600">
                 <dt>Entrega</dt>
@@ -138,7 +132,7 @@ export default function CarritoPage() {
               </div>
               <div className="flex justify-between gap-4 border-t border-gray-200 pt-4 text-lg">
                 <dt className="font-bold text-gray-900">Total provisional</dt>
-                <dd className="font-extrabold text-mosqueta-primary">{formatPrice(total)}</dd>
+                <dd className="font-extrabold text-mosqueta-primary">{formatMxn(total)}</dd>
               </div>
             </dl>
 
@@ -146,14 +140,13 @@ export default function CarritoPage() {
               Precios temporales para validar el carrito. Existencia, costo de entrega y venta final deben confirmarse.
             </div>
 
-            <button
-              type="button"
-              disabled
-              className="mt-5 flex w-full cursor-not-allowed items-center justify-center rounded-md bg-gray-200 px-6 py-3 font-bold text-gray-500"
+            <Link
+              href="/checkout"
+              className="mt-5 flex w-full items-center justify-center gap-2 rounded-md bg-mosqueta-primary px-6 py-3 font-bold text-white transition hover:bg-[#b0164e]"
             >
-              Continuar al pago
-            </button>
-            <p className="mt-2 text-center text-xs text-gray-500">El pago se habilitará cuando se definan entrega y métodos de cobro.</p>
+              Continuar al checkout <ArrowRight className="h-5 w-5" />
+            </Link>
+            <p className="mt-2 text-center text-xs text-gray-500">Podrás revisar los datos de entrega; todavía no se enviará ni guardará información.</p>
             <Link href="/catalogo" className="mt-5 flex items-center justify-center gap-2 text-sm font-bold text-mosqueta-primary hover:underline">
               Seguir agregando productos <ArrowRight className="h-4 w-4" />
             </Link>
