@@ -28,3 +28,11 @@ export function absoluteCatalogImage(image: string) {
   return image.startsWith('/') ? absoluteUrl(image) : image;
 }
 
+// Stripe necesita URLs absolutas; Next Image puede servir las imágenes de este
+// sitio como archivos locales sin permitir el dominio como origen remoto.
+export function catalogImageForDisplay(image: string) {
+  const siteRoot = absoluteUrl('/');
+  return image.startsWith(siteRoot)
+    ? resolveCatalogImage(image.slice(siteRoot.length - 1))
+    : resolveCatalogImage(image);
+}

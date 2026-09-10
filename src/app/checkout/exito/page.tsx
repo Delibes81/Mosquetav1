@@ -17,8 +17,15 @@ export default async function CheckoutSuccessPage({ searchParams }: SuccessPageP
   if (sessionId) {
     try {
       const session = await getStripeClient().checkout.sessions.retrieve(sessionId);
+      const orderId = session.metadata?.order_id;
+      const isMosquetaCheckout = session.metadata?.source === 'mosqueta-web'
+        && typeof orderId === 'string'
+        && session.client_reference_id === orderId
+        && session.currency === 'mxn';
+
       payment = {
-        paid: session.payment_status === 'paid' || session.payment_status === 'no_payment_required',
+        paid: isMosquetaCheckout
+          && (session.payment_status === 'paid' || session.payment_status === 'no_payment_required'),
         email: session.customer_details?.email ?? session.customer_email,
         amount: session.amount_total === null ? null : session.amount_total / 100,
       };

@@ -1,6 +1,6 @@
 # Seguimiento del proyecto Mosqueta
 
-Última actualización: 1 de septiembre de 2026.
+Última actualización: 9 de septiembre de 2026.
 
 Este documento separa lo terminado, lo pospuesto por decisión del equipo y la información que todavía debe solicitarse al cliente. Debe actualizarse después de cada bloque de trabajo.
 
@@ -16,8 +16,12 @@ Este documento separa lo terminado, lo pospuesto por decisión del equipo y la i
 - Carrito: persistencia local, cantidades, eliminación, contador y totales implementados.
 - Checkout de invitado: contacto, entrega, resumen, redirección segura a Stripe y confirmación de pago implementados y publicados.
 - Stripe en modo de prueba: compra exitosa por $30,000 realizada por el equipo; validación visual del retorno completada.
-- Gestor administrativo de pedidos: listado, filtros, métricas, detalle, historial y estados operativos implementados localmente; publicación pendiente.
-- Base de pedidos en Supabase: tablas, historial, idempotencia del webhook y políticas RLS aplicadas y verificadas.
+- Gestor administrativo de pedidos: publicación confirmada mediante sesión autenticada el 9 de septiembre de 2026. Muestra 5 pedidos (3 pagados y 2 pendientes); búsqueda, filtros, detalle y guardado de estado revisados. Pedido QA `MOS-2026-000001` actualizado a Confirmado tras aplicar la corrección.
+- Base de pedidos en Supabase: aplicación de tablas, historial, idempotencia y RLS registrada en el seguimiento previo; no reverificada contra el entorno remoto en esta sesión.
+- Corrección de permisos operativos: migración `202609090001_order_fulfillment_permissions.sql` aplicada manualmente mediante SQL Editor en el proyecto Supabase `doszumktrvomebkupeax`, con autorización del usuario. Función verificada con SECURITY DEFINER, search_path vacío y sin ejecución para anon. Las 12 comprobaciones locales aprobaron; el guardado remoto confirmó estado, nota y autor, sin duplicar historial al repetirlo y sin alterar el pago.
+- Validación técnica local: ESLint, TypeScript y build de producción aprobados el 9 de septiembre de 2026 con los cambios actuales, incluida la confirmación de pago.
+- Confirmación de pago endurecida para aceptar únicamente sesiones en MXN creadas por el checkout de Mosqueta.
+- QA del detalle: diferencia horaria entre listado/detalle y miniatura rota reproducidas. Correcciones locales listas (zona America/Mexico_City y URL local para imágenes del propio sitio); publicación pendiente.
 - Precios temporales para QA: pantallas de 55″ ($30,000), 65″ ($40,000) y 75″ ($50,000).
 - Despliegue de producción en Vercel: activo.
 
@@ -32,7 +36,7 @@ Este documento separa lo terminado, lo pospuesto por decisión del equipo y la i
 | Carga y revisión final de precios | Los precios serán definidos por el equipo/cliente | Recibir archivo definitivo de precios y reglas de IVA |
 | Sustitución de precios temporales de pantallas | Los valores actuales existen únicamente para probar el carrito | Reemplazarlos antes de conectar el dominio final |
 | Validación del webhook de Stripe | El retorno del pago ya se probó, pero falta confirmar la entrega HTTP 200 en Workbench | Revisar o reenviar `checkout.session.completed` después de publicar la persistencia |
-| Prueba integral del gestor de pedidos | El gestor está implementado, pero todavía no recibe pedidos reales | Aplicar la migración, publicar y ejecutar una segunda compra de prueba |
+| Prueba integral del gestor de pedidos | Guardado e historial del pedido QA aprobados en el sitio publicado; revisión móvil y mejoras visuales pendientes | Publicar las mejoras de presentación y cerrar QA responsive |
 | Activación comercial del checkout | La integración de prueba está lista, pero faltan reglas y documentos finales | Recibir aviso de privacidad, destinatario de pedidos, políticas y cobertura definitiva |
 | Activación de Stripe en producción | Actualmente se usarán claves y webhook de prueba | Completar validación de cuenta, definir métodos, comisiones, MSI y reembolsos; después cambiar a claves `live` |
 | Sustitución de imágenes de referencia | Faltan imágenes finales del cliente | Recibir y validar fotografías finales |
@@ -110,4 +114,4 @@ Decisiones confirmadas: compra como invitado para la primera versión, cobertura
 
 ## Próximo bloque recomendado
 
-El siguiente bloque es publicar el gestor administrativo. Después se ejecutará una segunda compra de prueba para comprobar creación del pedido, confirmación del webhook, visualización en el panel y cambio de estado. Antes de aceptar pagos reales se cerrarán cobertura, entrega, aviso de privacidad, destinatario de pedidos, políticas comerciales y claves de producción. La revisión UX/UI integral se hará sobre el recorrido completo.
+El gestor ya está publicado y el cambio de estado quedó validado en Supabase y en el panel. El siguiente bloque es publicar los ajustes locales de confirmación, fechas e imágenes, cerrar QA móvil y verificar el recorrido de compra y entrega HTTP 200 del webhook. Antes de aceptar pagos reales se cerrarán cobertura, entrega, aviso de privacidad, destinatario de pedidos, políticas comerciales y claves de producción. La revisión UX/UI integral se hará sobre el recorrido completo.

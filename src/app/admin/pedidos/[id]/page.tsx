@@ -24,6 +24,7 @@ import {
 import type { OrderPaymentStatus } from '@/lib/admin/order-types';
 import { getAdminOrder } from '@/lib/admin/orders';
 import { formatMxn } from '@/lib/currency';
+import { catalogImageForDisplay } from '@/lib/catalog-image';
 
 export const dynamic = 'force-dynamic';
 export const metadata: Metadata = { title: 'Detalle del pedido' };
@@ -32,6 +33,7 @@ function formatDate(value: string) {
   return new Intl.DateTimeFormat('es-MX', {
     dateStyle: 'long',
     timeStyle: 'short',
+    timeZone: 'America/Mexico_City',
   }).format(new Date(value));
 }
 
@@ -112,7 +114,7 @@ export default async function AdminOrderDetailPage({ params, searchParams }: Ord
                 {order.items.map((item) => (
                   <article key={item.id} className="flex gap-4 p-5 sm:p-6">
                     <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-slate-100">
-                      <Image src={item.imageUrl} alt="" fill sizes="80px" className="object-contain p-2" />
+                      <Image src={catalogImageForDisplay(item.imageUrl)} alt={item.productName} fill sizes="80px" className="object-contain p-2" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="text-xs font-bold uppercase tracking-wide text-mosqueta-secondary">{item.brand} · {item.model}</p>
