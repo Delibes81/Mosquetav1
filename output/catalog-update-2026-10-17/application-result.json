@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-17",
+  "project": "doszumktrvomebkupeax",
+  "bucket": "catalog-products",
+  "status": "applied-and-verified",
+  "uploadedWebp": 31,
+  "updatedVariants": 39,
+  "registeredImages": 28,
+  "updatedGalleries": 10,
+  "verifiedPublicWebpHashes": 31,
+  "publicCatalogProducts": 72,
+  "visualProof": "cafetera-publicada.jpg",
+  "skuModelMismatches": 0,
+  "alteredProtectedFields": 0,
+  "protectedFields": ["price_mxn", "stock", "availability", "published", "slug"],
+  "backup": "catalog_products.metadata.client_import_20261017_before",
+  "reviewOnlyModels": ["RR16D6AGX1", "RME360FDMRQ0"],
+  "unmatchedModelCodes": ["RME360PVMRE0", "MCL2440PPDG0"],
+  "unassignedWebp": 3,
+  "notes": "The 3 unassigned WebP belong to RR16D6AGX1. Unified product proposals were prepared separately for review. Existing gallery images and product UUIDs were retained."
+}

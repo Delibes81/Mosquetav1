@@ -1,8 +1,21 @@
 # Seguimiento del proyecto Mosqueta
 
-Última actualización: 9 de septiembre de 2026.
+Última actualización: 17 de octubre de 2026.
 
 Este documento separa lo terminado, lo pospuesto por decisión del equipo y la información que todavía debe solicitarse al cliente. Debe actualizarse después de cada bloque de trabajo.
+
+## Actualización del catálogo del 17 de octubre de 2026
+
+- Recibido `Catalogo_Mosqueta_Productos_Actualizado.xlsx`: 41 filas, equivalentes a 43 modelos distintos después de separar las alternativas y detectar modelos repetidos. No incluye precios ni inventario.
+- Convertidas y subidas a `catalog-products` las 31 fotografías recibidas para 11 modelos: de 2,311,270 a 701,588 bytes (69.6% menos), calidad WebP 82 y lado máximo de 2000 px, sin ampliar los originales.
+- Aplicada una transacción al proyecto Supabase `doszumktrvomebkupeax`: 39 variantes actualizadas con modelo como SKU, datos del nuevo Excel y 28 fotografías vinculadas a 10 galerías, con portada y orden. Conservados UUIDs, URLs, precios, existencias, disponibilidad, publicación e imágenes anteriores.
+- Verificado contra el estado anterior: 39 variantes revisadas, cero discrepancias entre SKU y modelo y cero cambios en los campos comerciales protegidos. Respaldo recuperable en `catalog_products.metadata.client_import_20261017_before`.
+- Verificadas las 31 URLs públicas: HTTP satisfactorio, MIME `image/webp` y SHA-256 idéntico al archivo optimizado correspondiente. La tienda muestra 72 productos publicados y la portada nueva de `BVSTDC4403` se revisó visualmente.
+- Por indicación del usuario, preparadas fichas únicas de `RR16D6AGX1` y `RME360FDMRQ0` para revisión, sin publicar ni fusionar automáticamente registros. Las tres fotografías de `RR16D6AGX1` están subidas, pendientes de asignación definitiva. Su ficha tiene diferencias de medidas entre Excel y fotografía.
+- Pendiente confirmar si `RME360PVMRE0` y `MCL2440PPDG0` son correcciones de `RME360PVMRM0` y `MCL2440PSDG0` o modelos nuevos. No se renombraron ni duplicaron automáticamente.
+- Archivos de preparación, resultado, evidencia y propuestas en `output/catalog-update-2026-10-17/`. El documento de cambios y devoluciones recibido no se publicó en este bloque.
+
+Las secciones siguientes conservan el seguimiento anterior al 17 de octubre para contexto. La recepción de imágenes y la prueba real de carga ya avanzaron en el alcance documentado arriba.
 
 ## Estado actual
 
