@@ -56,7 +56,7 @@ export default function ProductImageGallery({ images, productName }: ProductImag
   return (
     <div>
       <div
-        className="group relative min-h-[440px] overflow-hidden rounded-xl border border-gray-200 bg-[#e9ecf2] md:min-h-[620px]"
+        className="group relative min-h-[440px] overflow-hidden rounded-xl border border-gray-200 bg-white md:min-h-[620px]"
         onTouchStart={(event) => setTouchStart(event.touches[0]?.clientX ?? null)}
         onTouchEnd={(event) => handleTouchEnd(event.changedTouches[0]?.clientX ?? 0)}
       >
@@ -115,7 +115,7 @@ export default function ProductImageGallery({ images, productName }: ProductImag
               onClick={() => setSelectedIndex(index)}
               aria-label={`Ver imagen ${index + 1} de ${images.length}`}
               aria-current={index === selectedIndex ? 'true' : undefined}
-              className={`relative h-24 w-24 shrink-0 overflow-hidden rounded-xl border-2 bg-[#e9ecf2] transition focus:outline-none focus:ring-4 focus:ring-pink-200 ${
+              className={`relative h-24 w-24 shrink-0 overflow-hidden rounded-xl border-2 bg-white transition focus:outline-none focus:ring-4 focus:ring-pink-200 ${
                 index === selectedIndex
                   ? 'border-mosqueta-primary shadow-sm'
                   : 'border-transparent hover:border-pink-200'

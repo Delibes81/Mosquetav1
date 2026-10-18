@@ -61,7 +61,7 @@ export default function CarritoPage() {
           <section className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm" aria-label="Productos en el carrito">
             {items.map((item) => (
               <article key={item.id} className="grid gap-4 border-b border-gray-200 p-4 last:border-b-0 sm:grid-cols-[128px_minmax(0,1fr)] sm:p-6">
-                <Link href={`/producto/${item.slug}`} className="relative aspect-[4/3] overflow-hidden rounded-lg bg-[#e9ecf2] sm:aspect-square">
+                <Link href={`/producto/${item.slug}`} className="relative aspect-[4/3] overflow-hidden rounded-lg bg-white sm:aspect-square">
                   <Image src={item.image} alt={`${item.name} ${item.brand}`} fill sizes="128px" className="object-contain p-2" />
                 </Link>
 

@@ -211,7 +211,7 @@ export default function CheckoutPage() {
             <div className="mt-5 max-h-72 space-y-4 overflow-y-auto pr-1">
               {items.map((item) => (
                 <div key={item.id} className="flex gap-3">
-                  <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-md bg-[#e9ecf2]">
+                  <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-md bg-white">
                     <Image src={item.image} alt="" fill sizes="64px" className="object-contain p-1" />
                   </div>
                   <div className="min-w-0 flex-1">

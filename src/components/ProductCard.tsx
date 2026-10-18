@@ -14,7 +14,7 @@ export default function ProductCard({ product, eager = false }: { product: Catal
     <StaggerItem className="h-full">
       <article className="group relative bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col h-full">
         <Link href={`/producto/${product.slug}`} className="block">
-          <div className="aspect-[4/3] w-full overflow-hidden bg-[#e9ecf2] relative">
+          <div className="aspect-[4/3] w-full overflow-hidden bg-white relative">
             {product.imageStatus === 'referencia' && (
               <span className="absolute top-2 left-2 z-10 bg-white/90 text-gray-700 text-[9px] sm:text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide shadow-sm">
                 Imagen de referencia
