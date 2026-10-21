@@ -1,0 +1,1037 @@
+{
+  "changes": [
+    {
+      "sheet": "Catálogo de Productos",
+      "cell": "C11",
+      "before": "DiamondForce",
+      "after": "CKSTAF60WDDF"
+    }
+  ],
+  "sourceRows": 41,
+  "uniqueModels": 43,
+  "duplicates": [
+    [
+      {
+        "model": "RR16D6AGX1",
+        "row": 14
+      },
+      {
+        "model": "RR16D6AGX1",
+        "row": 37
+      }
+    ],
+    [
+      {
+        "model": "RME360FDMRQ0",
+        "row": 34
+      },
+      {
+        "model": "RME360FDMRQ0",
+        "row": 39
+      }
+    ]
+  ],
+  "totalImages": 62,
+  "newImages": 31,
+  "exactMatchedFiles": 56,
+  "exactMatchedModels": 34,
+  "duplicateImageBytes": [],
+  "newMatchedModels": [
+    "31390",
+    "55A65NV",
+    "65QD7QF",
+    "65UA7510PSC",
+    "75QD6",
+    "85A65NV",
+    "BN701LAA",
+    "CKSTAF60WDDF",
+    "LMA-78112CBAB0",
+    "LMA74215WBAB1",
+    "MCL1740ESBB",
+    "MCL2040ESDG0",
+    "MCL2040PSBB0",
+    "MCL2440EPDG0",
+    "MCL2440PPDG0",
+    "MCL2440PSBB0",
+    "MS-1536GIR",
+    "RMA-250PVMRM0",
+    "RME360FDMRQ0",
+    "RME360PVMRE0",
+    "RMF0411PYMX0",
+    "RR63D6WGX",
+    "UN55U8000FFXZX"
+  ],
+  "missingModels": [
+    "55Q6N",
+    "65QD6QV",
+    "75U6",
+    "85U8",
+    "MCL2440ESBB0",
+    "MCS10TS",
+    "MMDK14S2MB",
+    "RMA-1025YMXS",
+    "RMS-510VMREO"
+  ],
+  "ambiguous": [
+    {
+      "path": "MCL2440PSBBO/MCL2440PSBBO.jpg",
+      "new": true,
+      "matches": [],
+      "suggestions": [
+        "MCL2440PSBB0",
+        "MCL2440ESBB0"
+      ],
+      "sha256": "334dc42042989b651ddbae6372e24dc295e697ecf8a99657bee9ae0970bc400e",
+      "width": 1024,
+      "height": 572,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 13471
+    },
+    {
+      "path": "MCL244OESBBO/MCL244OESBBO.png",
+      "new": true,
+      "matches": [],
+      "suggestions": [
+        "MCL2440ESBB0",
+        "MCL2440PSBB0"
+      ],
+      "sha256": "eb73ad6009a978d0c5ea794519f76b2c997a66d6ef5b9e09d2d7bbeb689d6371",
+      "width": 1024,
+      "height": 572,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 60863
+    },
+    {
+      "path": "MCS10TA/MCS10TA.png",
+      "new": true,
+      "matches": [],
+      "suggestions": [
+        "MCS10TS"
+      ],
+      "sha256": "ff21c07c1c9521fb014541952a8e3a33b029d01f04416219c17a4d4e72625614",
+      "width": 1024,
+      "height": 572,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 527285
+    },
+    {
+      "path": "MMDK14SMB/MMDK14SMB.jpg",
+      "new": true,
+      "matches": [],
+      "suggestions": [
+        "MMDK14S2MB"
+      ],
+      "sha256": "cfa80c8d6c171b885ab30f1fec18a54bee31ece3af90694f4b596a561b197d44",
+      "width": 554,
+      "height": 554,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 20630
+    },
+    {
+      "path": "RMS510VMRE0/RMS510VMRE0.jpg",
+      "new": true,
+      "matches": [],
+      "suggestions": [
+        "RMS-510VMREO"
+      ],
+      "sha256": "59546714e889be67eb1fe71857f6fa0a2d54709906dc3ac19f2bf3c276ed43af",
+      "width": 316,
+      "height": 316,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 6131
+    },
+    {
+      "path": "RR16D6AGX/RR16D6AGX.png",
+      "new": true,
+      "matches": [],
+      "suggestions": [
+        "RR16D6AGX1",
+        "RR63D6WGX"
+      ],
+      "sha256": "49c86a65f863c8677483ec09338c26411585ac054e5761b65c5b94432de51c4e",
+      "width": 647,
+      "height": 723,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 366990
+    }
+  ],
+  "imageDetails": [
+    {
+      "path": "31390/31390.png",
+      "new": true,
+      "matches": [
+        "31390"
+      ],
+      "suggestions": [],
+      "sha256": "b7e95146d97f8aead257fb58aacb08b4099d06e4f0ecc704d92f153484418166",
+      "width": 606,
+      "height": 439,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 358227
+    },
+    {
+      "path": "55A65NV/55A65NV.jpg",
+      "new": true,
+      "matches": [
+        "55A65NV"
+      ],
+      "suggestions": [],
+      "sha256": "c8b3b95edd58a9f395c340d04f28d031e6ec24e7e9ea70687170963efe098677",
+      "width": 316,
+      "height": 316,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 22660
+    },
+    {
+      "path": "65QD7QF/65QD7QF.jpg",
+      "new": true,
+      "matches": [
+        "65QD7QF"
+      ],
+      "suggestions": [],
+      "sha256": "6d64ddd74336f8eb2b2c4c68174d8656f662c6df8d53ed8734e38607cc0b80a9",
+      "width": 316,
+      "height": 316,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 18879
+    },
+    {
+      "path": "65UA7510PSC/65UA7510PSC.jpg",
+      "new": true,
+      "matches": [
+        "65UA7510PSC"
+      ],
+      "suggestions": [],
+      "sha256": "0aace5b384148f1151c2963c0abe0ef13e303064c6cc3ac26570c617ae2c86bd",
+      "width": 316,
+      "height": 316,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 13405
+    },
+    {
+      "path": "75QD6/75QD6.jpg",
+      "new": true,
+      "matches": [
+        "75QD6"
+      ],
+      "suggestions": [],
+      "sha256": "67bc493ac3df9de9d89628c1d1a7f173ac2c758a452cae8ca0735b2c6828db06",
+      "width": 316,
+      "height": 316,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 13878
+    },
+    {
+      "path": "85A65NV/85A65NV.jpg",
+      "new": true,
+      "matches": [
+        "85A65NV"
+      ],
+      "suggestions": [],
+      "sha256": "9733c1a55456cc992f3e33fcfa74243280cb3112a1af192a52cac633b364c1bf",
+      "width": 316,
+      "height": 316,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 20319
+    },
+    {
+      "path": "BN701LAA/BN701LAA.jpg",
+      "new": true,
+      "matches": [
+        "BN701LAA"
+      ],
+      "suggestions": [],
+      "sha256": "c15758005c4dcb24c81ff16585e169f8965152c8ad71b26b6a80846db2eebb58",
+      "width": 1024,
+      "height": 572,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 31973
+    },
+    {
+      "path": "BVSTDC4403. Portada.jpg",
+      "new": false,
+      "matches": [
+        "BVSTDC4403"
+      ],
+      "suggestions": [],
+      "sha256": "c0cde97d11fd1720f21d2a168d1c7a45c660903a996d8d461b914094624e9203",
+      "width": 717,
+      "height": 717,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 44911
+    },
+    {
+      "path": "BVSTDC4403.1.jpg",
+      "new": false,
+      "matches": [
+        "BVSTDC4403"
+      ],
+      "suggestions": [],
+      "sha256": "b0f4aa5b112ffa05993c19208e74b1e1c6230a5f348b3d05d240b2d52de44a10",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 108702
+    },
+    {
+      "path": "BVSTDC4403/BVSTDC4403.2.jpg",
+      "new": false,
+      "matches": [
+        "BVSTDC4403"
+      ],
+      "suggestions": [],
+      "sha256": "7241338892561896a7d002fd91de18afce67b19b8380e461386a3c7624a2fe6d",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 81296
+    },
+    {
+      "path": "CKSTAF60WDDF/CKSTAF60WDDF.jpg",
+      "new": true,
+      "matches": [
+        "CKSTAF60WDDF"
+      ],
+      "suggestions": [],
+      "sha256": "db155edd5ad14e4e13c652a12cdf2f5233fd0ee4a02711a80c03ad66d94761cb",
+      "width": 1024,
+      "height": 572,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 35478
+    },
+    {
+      "path": "EMDPCCB1. Portada.jpg",
+      "new": false,
+      "matches": [
+        "EMDPCCB1"
+      ],
+      "suggestions": [],
+      "sha256": "2d99b787191668bd1f0b16121ff326e16170c368294b049610a21b3435016320",
+      "width": 1200,
+      "height": 1200,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 46096
+    },
+    {
+      "path": "EMDPCCB1.jpg",
+      "new": false,
+      "matches": [
+        "EMDPCCB1"
+      ],
+      "suggestions": [],
+      "sha256": "0795cb8d108df6023405224db401e7decfd24f4a669ac195f9a4a4c87a967a59",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 54216
+    },
+    {
+      "path": "EMDPCCB3.1.jpg",
+      "new": false,
+      "matches": [
+        "EMDPCCB3"
+      ],
+      "suggestions": [],
+      "sha256": "8292581cc6c94a58832da167ab3aca803a201b9222861bc48a483674f3a5c954",
+      "width": 550,
+      "height": 550,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 17172
+    },
+    {
+      "path": "EMDPCCB3/EMDPCCB3. Portada.jpg",
+      "new": false,
+      "matches": [
+        "EMDPCCB3"
+      ],
+      "suggestions": [],
+      "sha256": "fdafa43f04bd2bc7da263c73d317c43dc30a0fd1ca59f4975b7e2bbeda933f2f",
+      "width": 1200,
+      "height": 1200,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 46656
+    },
+    {
+      "path": "HMM111SEJ.1.jpg",
+      "new": false,
+      "matches": [
+        "HMM-111SEJ"
+      ],
+      "suggestions": [],
+      "sha256": "db4087f946b7c12994b5b87b2c5c1c53a635bf21fa9fc7b894de653515803699",
+      "width": 1200,
+      "height": 1200,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 101928
+    },
+    {
+      "path": "HMM111SEJ.2.jpg",
+      "new": false,
+      "matches": [
+        "HMM-111SEJ"
+      ],
+      "suggestions": [],
+      "sha256": "3e9578aa59114a4b9c225369e780a4e3fb280f861208549d4160ad26643742b8",
+      "width": 1200,
+      "height": 1200,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 80744
+    },
+    {
+      "path": "HMM111SEJ.3.jpg",
+      "new": false,
+      "matches": [
+        "HMM-111SEJ"
+      ],
+      "suggestions": [],
+      "sha256": "b3df84544fa25a2105df0c2aaa671d741dfdb54850feb0a6368e80adc761c4b6",
+      "width": 1200,
+      "height": 1200,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 92660
+    },
+    {
+      "path": "HMM111SEJ.portada.jpg",
+      "new": false,
+      "matches": [
+        "HMM-111SEJ"
+      ],
+      "suggestions": [],
+      "sha256": "4f8242159cf63ca3f34785d823c63d6be0ece49b1c5c6731fbfaece2bcbb5376",
+      "width": 1200,
+      "height": 1200,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 104170
+    },
+    {
+      "path": "LMA74215WBAB1/LMA74215WBAB1.png",
+      "new": true,
+      "matches": [
+        "LMA74215WBAB1"
+      ],
+      "suggestions": [],
+      "sha256": "4bcac04ae86477e45a1e27b7442d41b98f886618bd4f72d22827612f06c6f778",
+      "width": 704,
+      "height": 730,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 100894
+    },
+    {
+      "path": "LMA78112CBAB0/LMA78112CBABO.png",
+      "new": true,
+      "matches": [
+        "LMA-78112CBAB0"
+      ],
+      "suggestions": [],
+      "sha256": "612c859aa41e7bf0f7f7d36e65dcff33b993004548f8463673693866b03523f4",
+      "width": 543,
+      "height": 900,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 97946
+    },
+    {
+      "path": "MCL1740ESBB/MCL1740ESBB.png",
+      "new": true,
+      "matches": [
+        "MCL1740ESBB"
+      ],
+      "suggestions": [],
+      "sha256": "e2a4b53b9c1978698801e3cae23f89909105353e87dbf851fbda3ea6a79c729f",
+      "width": 1024,
+      "height": 572,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 89755
+    },
+    {
+      "path": "MCL2040ESDG0/MCL2040ESDG0.jpg",
+      "new": true,
+      "matches": [
+        "MCL2040ESDG0"
+      ],
+      "suggestions": [],
+      "sha256": "185addc4d229fc833aa1b8fcb24947b4aba5e87daa3f5bb1d92e0b6f7b8d8f75",
+      "width": 1024,
+      "height": 572,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 21189
+    },
+    {
+      "path": "MCL2040PSBB0/MCL2040PSBB0/MCL2040PSBB0.PORTADA.png",
+      "new": true,
+      "matches": [
+        "MCL2040PSBB0"
+      ],
+      "suggestions": [],
+      "sha256": "e6c0c1c6132e7ca6bfcf83985f3a9a7504360df36c69b232222c7a9acde826a1",
+      "width": 1024,
+      "height": 572,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 128535
+    },
+    {
+      "path": "MCL2440EPDG0/MCL2440EPDG0.jpg",
+      "new": true,
+      "matches": [
+        "MCL2440EPDG0"
+      ],
+      "suggestions": [],
+      "sha256": "7fb6cd46814c7099c61ffeceadfbe471584e8b0f4033dd48b04d781059a2bb52",
+      "width": 940,
+      "height": 1215,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 62291
+    },
+    {
+      "path": "MCL2440PPDG0/MCL2440PPDG0.png",
+      "new": true,
+      "matches": [
+        "MCL2440PPDG0"
+      ],
+      "suggestions": [],
+      "sha256": "501a68ba9184eb85ca622005a51cec63b77da9eb6d1988bd3d97e7c4669ac20f",
+      "width": 490,
+      "height": 1167,
+      "mode": "RGBA",
+      "alpha": true,
+      "bytes": 365740
+    },
+    {
+      "path": "MCL2440PSBB0/MCL2440PSBB0.jpg",
+      "new": true,
+      "matches": [
+        "MCL2440PSBB0"
+      ],
+      "suggestions": [],
+      "sha256": "636011920e3b1efd7c18b0935332fdc80b8521d5391e996bd3486dd5fe9bed89",
+      "width": 940,
+      "height": 1215,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 45328
+    },
+    {
+      "path": "MCL2440PSBBO/MCL2440PSBBO.jpg",
+      "new": true,
+      "matches": [],
+      "suggestions": [
+        "MCL2440PSBB0",
+        "MCL2440ESBB0"
+      ],
+      "sha256": "334dc42042989b651ddbae6372e24dc295e697ecf8a99657bee9ae0970bc400e",
+      "width": 1024,
+      "height": 572,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 13471
+    },
+    {
+      "path": "MCL244OESBBO/MCL244OESBBO.png",
+      "new": true,
+      "matches": [],
+      "suggestions": [
+        "MCL2440ESBB0",
+        "MCL2440PSBB0"
+      ],
+      "sha256": "eb73ad6009a978d0c5ea794519f76b2c997a66d6ef5b9e09d2d7bbeb689d6371",
+      "width": 1024,
+      "height": 572,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 60863
+    },
+    {
+      "path": "MCS10TA/MCS10TA.png",
+      "new": true,
+      "matches": [],
+      "suggestions": [
+        "MCS10TS"
+      ],
+      "sha256": "ff21c07c1c9521fb014541952a8e3a33b029d01f04416219c17a4d4e72625614",
+      "width": 1024,
+      "height": 572,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 527285
+    },
+    {
+      "path": "MMDK14SMB/MMDK14SMB.jpg",
+      "new": true,
+      "matches": [],
+      "suggestions": [
+        "MMDK14S2MB"
+      ],
+      "sha256": "cfa80c8d6c171b885ab30f1fec18a54bee31ece3af90694f4b596a561b197d44",
+      "width": 554,
+      "height": 554,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 20630
+    },
+    {
+      "path": "MS-1536GIS.1.jpg",
+      "new": false,
+      "matches": [
+        "MS-1536GIS"
+      ],
+      "suggestions": [],
+      "sha256": "101830d27c0de2816ca23fcfc3e7a2e9ec8e7d073f814a44541cc09bf3572ccd",
+      "width": 640,
+      "height": 640,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 36454
+    },
+    {
+      "path": "MS-1536GIS.2.jpg",
+      "new": false,
+      "matches": [
+        "MS-1536GIS"
+      ],
+      "suggestions": [],
+      "sha256": "5d1c9ab008346b7a6502bcbe0ad0a69c57f63d987329aba8c205181255c9d6e7",
+      "width": 640,
+      "height": 640,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 19926
+    },
+    {
+      "path": "MS-1536GIS.portada.jpg",
+      "new": false,
+      "matches": [
+        "MS-1536GIS"
+      ],
+      "suggestions": [],
+      "sha256": "27c16106b233f063950a6e7e22826bc5452cacda4fbe6b653ab1ef9bf4382c41",
+      "width": 615,
+      "height": 361,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 24994
+    },
+    {
+      "path": "MS.1536GIR/MS.1536GIR/MS.1536GIR. 2.png",
+      "new": true,
+      "matches": [
+        "MS-1536GIR"
+      ],
+      "suggestions": [],
+      "sha256": "7b14b160e275a63c8abe4a500e2fcc046d2fc485c4f50fee323d95fd8100e2d8",
+      "width": 1024,
+      "height": 572,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 630359
+    },
+    {
+      "path": "MS.1536GIR/MS.1536GIR/MS.1536GIR.portada.png",
+      "new": true,
+      "matches": [
+        "MS-1536GIR"
+      ],
+      "suggestions": [],
+      "sha256": "6f1a54401358aab769761e1df9c034d121ad390d95e08503daf5e76404c28a60",
+      "width": 366,
+      "height": 242,
+      "mode": "RGBA",
+      "alpha": true,
+      "bytes": 51656
+    },
+    {
+      "path": "RMA250PVMRM0/RMA250PVMRM0.png",
+      "new": true,
+      "matches": [
+        "RMA-250PVMRM0"
+      ],
+      "suggestions": [],
+      "sha256": "a8d5b209f3f27277439dbecdd154f30d2b32ccfd18a0783b7385e579ca2a4f8e",
+      "width": 303,
+      "height": 900,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 183447
+    },
+    {
+      "path": "RME360FDMRQ0/RME360FDMRQ0.jpg",
+      "new": true,
+      "matches": [
+        "RME360FDMRQ0"
+      ],
+      "suggestions": [],
+      "sha256": "819b59737924e031662f34ea8ec2b5872a8f8069006767852172e5348f84bcce",
+      "width": 316,
+      "height": 316,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 7529
+    },
+    {
+      "path": "RME360PVMRE0.1/RME360PVMRE0.1.jpg",
+      "new": true,
+      "matches": [
+        "RME360PVMRE0"
+      ],
+      "suggestions": [],
+      "sha256": "353324739f38d15c87574bc06d11215b4e26137990ab9229bb5ddaeec496a711",
+      "width": 316,
+      "height": 316,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 5538
+    },
+    {
+      "path": "RME360PVMRE0/RME360PVMRE0.png",
+      "new": true,
+      "matches": [
+        "RME360PVMRE0"
+      ],
+      "suggestions": [],
+      "sha256": "6c7e5f35f5548114683dda7fd2e3327e569b520379146480a48f58b2f3258223",
+      "width": 306,
+      "height": 900,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 111556
+    },
+    {
+      "path": "RMF0260XMXB3/RMF0260XMXB3.2.jpg",
+      "new": false,
+      "matches": [
+        "RMF0260XMXB3"
+      ],
+      "suggestions": [],
+      "sha256": "ca1041067e385339f75d569efb7882734f5db827b0e7d33de7871a3f9ebcf4c4",
+      "width": 945,
+      "height": 825,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 49199
+    },
+    {
+      "path": "RMF0260XMXB3/RMF0260XMXB3.portada.jpg",
+      "new": false,
+      "matches": [
+        "RMF0260XMXB3"
+      ],
+      "suggestions": [],
+      "sha256": "0a1c3c74a31447b58ba730063fffa097a5d7b37cc70ba70a56a56c2c20a30576",
+      "width": 1200,
+      "height": 1200,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 52507
+    },
+    {
+      "path": "RMF0260XMXX3.1.jpg",
+      "new": false,
+      "matches": [
+        "RMF0260XMXX3"
+      ],
+      "suggestions": [],
+      "sha256": "a8a1bb445a7e13f0fb6041d1212c137804661f38c841cd35995a0512fc343307",
+      "width": 1200,
+      "height": 1200,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 129620
+    },
+    {
+      "path": "RMF0260XMXX3/RMF0260XMXX3. portada.jpg",
+      "new": false,
+      "matches": [
+        "RMF0260XMXX3"
+      ],
+      "suggestions": [],
+      "sha256": "d083b69d440b756624ef3c3de3ad9dee4f6eeb99b04796caf517025c0e066aaa",
+      "width": 1200,
+      "height": 1200,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 92372
+    },
+    {
+      "path": "RMF0260XMXX3/RMF0260XMXX3.2.jpg",
+      "new": false,
+      "matches": [
+        "RMF0260XMXX3"
+      ],
+      "suggestions": [],
+      "sha256": "78d4329e10a82cd92755c67ff8286f20f3b532798b9a2022aae789e0d86a0587",
+      "width": 1200,
+      "height": 1200,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 69268
+    },
+    {
+      "path": "RMF0411PYMX0/RMF0411PYMX0.PORTADA.png",
+      "new": true,
+      "matches": [
+        "RMF0411PYMX0"
+      ],
+      "suggestions": [],
+      "sha256": "21b987703a75710f93a87d9e62a611d17f31842398eb7137f92c04d6c51abde5",
+      "width": 570,
+      "height": 900,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 222726
+    },
+    {
+      "path": "RMF0411PYMX1.2.1.jpg",
+      "new": false,
+      "matches": [
+        "RMF0411PYMX1"
+      ],
+      "suggestions": [],
+      "sha256": "e1a61d1a34e7bf60c558899519f7efb7422ec216093d2fa95df75223717de16f",
+      "width": 1200,
+      "height": 1200,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 59704
+    },
+    {
+      "path": "RMF0411PYMX1.2.jpg",
+      "new": false,
+      "matches": [
+        "RMF0411PYMX1"
+      ],
+      "suggestions": [],
+      "sha256": "9f6e65250d4be7441ed642a73a755e5b1c53eb57b34f18c62e045f2e874f1bf8",
+      "width": 1200,
+      "height": 1200,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 98096
+    },
+    {
+      "path": "RMF0411PYMX1.portada.jpg",
+      "new": false,
+      "matches": [
+        "RMF0411PYMX1"
+      ],
+      "suggestions": [],
+      "sha256": "bb218e63acc012dff8976b4a93cc2b69dc192476e9bc8e1e6fa59cd1e4eafa90",
+      "width": 1200,
+      "height": 1200,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 57671
+    },
+    {
+      "path": "RMS510VMRE0/RMS510VMRE0.jpg",
+      "new": true,
+      "matches": [],
+      "suggestions": [
+        "RMS-510VMREO"
+      ],
+      "sha256": "59546714e889be67eb1fe71857f6fa0a2d54709906dc3ac19f2bf3c276ed43af",
+      "width": 316,
+      "height": 316,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 6131
+    },
+    {
+      "path": "RR16D6AGX/RR16D6AGX.png",
+      "new": true,
+      "matches": [],
+      "suggestions": [
+        "RR16D6AGX1",
+        "RR63D6WGX"
+      ],
+      "sha256": "49c86a65f863c8677483ec09338c26411585ac054e5761b65c5b94432de51c4e",
+      "width": 647,
+      "height": 723,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 366990
+    },
+    {
+      "path": "RR16D6AGX1. portada.jpg",
+      "new": false,
+      "matches": [
+        "RR16D6AGX1"
+      ],
+      "suggestions": [],
+      "sha256": "ddee2a7002d5569f911e297b2c5aed3e0948bf7416b1b0bb53256b0de0b5a580",
+      "width": 936,
+      "height": 1024,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 134919
+    },
+    {
+      "path": "RR16D6AGX1.1.jpg",
+      "new": false,
+      "matches": [
+        "RR16D6AGX1"
+      ],
+      "suggestions": [],
+      "sha256": "da9c29b992734bab1e254205a572c8682a4dc7e72f8ef22b723e4f54f3f7a006",
+      "width": 677,
+      "height": 601,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 40470
+    },
+    {
+      "path": "RR16D6AGX1.2.jpg",
+      "new": false,
+      "matches": [
+        "RR16D6AGX1"
+      ],
+      "suggestions": [],
+      "sha256": "236065226acdf962096b7c6be190c73c5df03eb212f2fc3bdaa44ab37bd369a7",
+      "width": 709,
+      "height": 493,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 84325
+    },
+    {
+      "path": "RR63D6WGX/RR63D6WGX.png",
+      "new": true,
+      "matches": [
+        "RR63D6WGX"
+      ],
+      "suggestions": [],
+      "sha256": "b15cae00fc777f2c4b374faf48a217f93b8aad222e7c08c8ce5712727389fbff",
+      "width": 444,
+      "height": 900,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 79815
+    },
+    {
+      "path": "UN55U8000FFXZX/UN55U8000FFXZX.jpg",
+      "new": true,
+      "matches": [
+        "UN55U8000FFXZX"
+      ],
+      "suggestions": [],
+      "sha256": "6af4b2d0d1859c64ea62a792087cda23305c72cc09705e615a7a64b88a4f7281",
+      "width": 316,
+      "height": 316,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 17904
+    },
+    {
+      "path": "WD-354 K2.1.jpg",
+      "new": false,
+      "matches": [
+        "WD-354 K2"
+      ],
+      "suggestions": [],
+      "sha256": "67b43ec9f63c516de367c45e19cc02c32089059db68cad4799c29c585b22cd19",
+      "width": 1041,
+      "height": 1500,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 200545
+    },
+    {
+      "path": "WD-354 K2.jpg",
+      "new": false,
+      "matches": [
+        "WD-354 K2"
+      ],
+      "suggestions": [],
+      "sha256": "e751b5a4dfa36c730a44080d957dbd024556d72cb43a1fc9d7c27341f7c72be1",
+      "width": 1500,
+      "height": 892,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 129345
+    },
+    {
+      "path": "WD-354 K2/WD-354 K2.Portada.jpg",
+      "new": false,
+      "matches": [
+        "WD-354 K2"
+      ],
+      "suggestions": [],
+      "sha256": "5a4d0378b2e6383840e8ac119bbfa96dcfc0c9df6dccdecd11dfa89b49ab8875",
+      "width": 792,
+      "height": 1024,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 39518
+    },
+    {
+      "path": "WK-5915BD.1.jpg",
+      "new": false,
+      "matches": [
+        "WK-5915/BD"
+      ],
+      "suggestions": [],
+      "sha256": "6e62d0eaafc0681e91fde0b9da66697f5330044f61c0feb752667604f97de8f4",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 88373
+    },
+    {
+      "path": "WK-5915BD/WK-5915BD.2.jpg",
+      "new": false,
+      "matches": [
+        "WK-5915/BD"
+      ],
+      "suggestions": [],
+      "sha256": "768e72d51837a01460737a60300edb3c725f52658139458434f79738da151f4e",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 68454
+    },
+    {
+      "path": "WK-5915BD/WK-5915BD.jpg",
+      "new": false,
+      "matches": [
+        "WK-5915/BD"
+      ],
+      "suggestions": [],
+      "sha256": "eed210ecdccc9acc77cc8d79514b72d2672f5dc7708a864ceada29d50c122935",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 56959
+    }
+  ]
+}

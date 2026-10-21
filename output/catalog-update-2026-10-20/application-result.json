@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-20",
+  "project": "doszumktrvomebkupeax",
+  "bucket": "catalog-products",
+  "status": "applied-and-verified",
+  "matchedModels": 17,
+  "uploadedWebp": 18,
+  "linkedPhotos": 18,
+  "updatedGalleries": 17,
+  "priorImageRowsRetained": 17,
+  "alteredVariants": 0,
+  "alteredProtectedProductFields": 0,
+  "verifiedPublicWebpHashes": 18,
+  "verifiedPublicWebpMimeTypes": 18,
+  "publicProductPagesHttp200": 17,
+  "publicProductPagesWithNewPhotos": 17,
+  "heldPhotosNotUploaded": 13,
+  "backup": "catalog_products.metadata.client_images_20261020_before",
+  "visualProof": "galeria-publicada.jpg",
+  "visuallyCheckedModel": "MS-1536GIR",
+  "policies": "Unchanged; not published in this batch",
+  "source": "Supabase SQL Editor transaction result, public asset SHA-256/MIME checks, public product page checks and visual browser review"
+}

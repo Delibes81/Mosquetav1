@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-20",
+  "project": "doszumktrvomebkupeax",
+  "status": "applied-and-verified",
+  "uploadedWebp": 12,
+  "linkedPhotos": 12,
+  "updatedGalleries": 11,
+  "correctedSkus": 6,
+  "correctedManufacturerModels": 4,
+  "priorImagesRetained": 12,
+  "alteredCommercialFields": 0,
+  "publicAssetsVerifiedBySha256AndMime": 12,
+  "publicPagesHttp200WithCorrectModelAndNewPhotos": 11,
+  "manufacturerModelCorrections": {
+    "DiamondForce": "CKSTAF60WDDF",
+    "MCL2440PSDG0": "MCL2440PPDG0",
+    "RME360PVMRM0": "RME360PVMRE0",
+    "RMS-510VMREO": "RMS-510VMRE0"
+  },
+  "additionalModelAsSkuAssignments": ["RR16D6AGX1", "RME360FDMRQ0"],
+  "backup": "catalog_products.metadata.client_corrections_20261020_before",
+  "visualProof": "diamondforce-publicada.jpg",
+  "duplicateProductRowsMerged": 0,
+  "televisionResult": "../catalog-update-2026-10-20-tv-65/application-result.json"
+}

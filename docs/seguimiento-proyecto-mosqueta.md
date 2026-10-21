@@ -1,8 +1,23 @@
 # Seguimiento del proyecto Mosqueta
 
-Última actualización: 17 de octubre de 2026.
+Última actualización: 20 de octubre de 2026.
 
 Este documento separa lo terminado, lo pospuesto por decisión del equipo y la información que todavía debe solicitarse al cliente. Debe actualizarse después de cada bloque de trabajo.
+
+## Fotografías adicionales del 20 de octubre de 2026
+
+- Resolución posterior de las 13 fotografías retenidas: el usuario confirmó errores de captura 0/O y letras faltantes/cambiadas, autorizó vincular CKSTAF60WDDF con DiamondForce y eligió 65QD6QV para la foto que muestra 65 pulgadas. Aplicadas 12 fotos a 11 galerías y una foto a la pantalla elegida; verificadas las 13 URLs WebP por huella/MIME y las 12 fichas públicas por HTTP y contenido. Todas las 31 fotos nuevas de esta entrega ya están asignadas.
+- Corregidos cuatro modelos (DiamondForce → CKSTAF60WDDF, MCL2440PSDG0 → MCL2440PPDG0, RME360PVMRM0 → RME360PVMRE0 y RMS-510VMREO → RMS-510VMRE0) y seis SKUs, conservando URLs, UUIDs, precios, inventario, disponibilidad, publicación y especificaciones. Se retuvieron las 13 imágenes previas de las 12 galerías intervenidas y las portadas finales existentes. Respaldo en `catalog_products.metadata.client_corrections_20261020_before`.
+- RR16D6AGX se vinculó al Frigobar existente `excel-30`; no se fusionó la ficha duplicada `excel-71`. RME360FDMRQ0 recibió foto en su ficha existente sin consolidar las descripciones divergentes del Excel. La consolidación de fichas y las tres fotos históricas de RR16D6AGX1 del lote del 17 de octubre siguen fuera de este bloque.
+- Evidencia, manifiestos y SQL adicionales en `output/catalog-update-2026-10-20-corrections/` y `output/catalog-update-2026-10-20-tv-65/`; generador en `scripts/prepare-approved-image-corrections.py`. Las cifras de retención que siguen describen la preparación inicial y ya fueron resueltas arriba.
+- Revisada la entrega `Catálogo Mosqueta-2`: 62 fotografías; las 31 anteriores siguen intactas y se prepararon las 31 nuevas en WebP, de 3,732,397 a 341,704 bytes (90.8% menos), calidad 82, máximo 2000 px y sin ampliar imágenes pequeñas.
+- Validada en Supabase una coincidencia única de marca/modelo, referencia de origen y URL para los 17 modelos. Subidas las 18 fotografías habilitadas y vinculadas a sus galerías, con 17 portadas nuevas y 17 imágenes anteriores conservadas. La transacción confirmó cero variantes alteradas y cero cambios en los campos protegidos de productos; copia recuperable en `catalog_products.metadata.client_images_20261020_before`.
+- Otras 13 fotografías convertidas quedaron separadas por diferencias de código, fichas repetidas, cambio de modelo de la freidora o contradicción de pulgadas. Detalle en `output/catalog-update-2026-10-20/pendientes.md`.
+- Verificados los 62 originales por SHA-256 y los 31 WebP por formato, dimensiones e integridad; ZIP de 31 imágenes comprobado. Diez fotografías nuevas tienen resolución pequeña y no se ampliaron.
+- Verificadas las 18 fotografías subidas por URL pública, MIME `image/webp` y SHA-256. Las 17 fichas públicas devolvieron HTTP 200 e incluyeron las fotos nuevas; la galería `MS-1536GIR` se revisó visualmente con dos fotos nuevas y su referencia anterior conservada. Las 13 fotos pendientes no se subieron.
+- El usuario indicó conservar la política de la marca tal como fue recibida, sin reescribirla, después de comunicar las observaciones de revisión jurídica. La política no se modificó ni publicó en este bloque.
+- Scripts reproducibles en `scripts/prepare-catalog-images.py` y `scripts/prepare-image-upload-sql.py`; manifiesto, WebP, ZIP, SQL, resultado remoto, evidencia e inventario revisado en `output/catalog-update-2026-10-20/`.
+- El fondo blanco de las fotografías del sitio ya fue desplegado en Vercel con el commit `132a58cc` el 17 de octubre.
 
 ## Actualización del catálogo del 17 de octubre de 2026
 

@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-20",
+  "authorization": "User confirmed 0/O and missing/changed letters were typing errors, requested linking CKSTAF60WDDF to DiamondForce and using the 65-inch photo for a 65-inch TV.",
+  "scope": "Correct model/SKU identities and assign photographs without merging products or changing financial fields, publication or URLs.",
+  "television": {"source": "55A65NV/55A65NV.jpg", "status": "approved", "targetModel": "65QD6QV", "targetSourceRef": "excel-52-2"},
+  "images": [
+    {"source": "CKSTAF60WDDF/CKSTAF60WDDF.jpg", "targetSourceRef": "excel-29", "approvedModel": "CKSTAF60WDDF", "order": 0},
+    {"source": "LMA78112CBAB0/LMA78112CBABO.png", "targetSourceRef": "excel-41", "approvedModel": "LMA-78112CBAB0", "order": 0},
+    {"source": "MCL2440PPDG0/MCL2440PPDG0.png", "targetSourceRef": "excel-11", "approvedModel": "MCL2440PPDG0", "order": 0},
+    {"source": "MCL2440PSBBO/MCL2440PSBBO.jpg", "targetSourceRef": "excel-12", "approvedModel": "MCL2440PSBB0", "order": 0},
+    {"source": "MCL244OESBBO/MCL244OESBBO.png", "targetSourceRef": "excel-10", "approvedModel": "MCL2440ESBB0", "order": 0},
+    {"source": "MCS10TA/MCS10TA.png", "targetSourceRef": "excel-39", "approvedModel": "MCS10TS", "order": 0},
+    {"source": "MMDK14SMB/MMDK14SMB.jpg", "targetSourceRef": "excel-38", "approvedModel": "MMDK14S2MB", "order": 0},
+    {"source": "RME360FDMRQ0/RME360FDMRQ0.jpg", "targetSourceRef": "excel-68", "approvedModel": "RME360FDMRQ0", "order": 0},
+    {"source": "RME360PVMRE0/RME360PVMRE0.png", "targetSourceRef": "excel-67", "approvedModel": "RME360PVMRE0", "order": 0},
+    {"source": "RME360PVMRE0.1/RME360PVMRE0.1.jpg", "targetSourceRef": "excel-67", "approvedModel": "RME360PVMRE0", "order": 1},
+    {"source": "RMS510VMRE0/RMS510VMRE0.jpg", "targetSourceRef": "excel-69", "approvedModel": "RMS-510VMRE0", "order": 0},
+    {"source": "RR16D6AGX/RR16D6AGX.png", "targetSourceRef": "excel-30", "approvedModel": "RR16D6AGX1", "order": 0}
+  ]
+}

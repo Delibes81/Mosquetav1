@@ -1,0 +1,7 @@
+{
+  "date": "2026-10-20",
+  "authorization": "User explicitly selected Hisense 65QD6QV for the photo showing 65 inches that was incorrectly named 55A65NV.jpg.",
+  "images": [
+    {"source": "55A65NV/55A65NV.jpg", "targetSourceRef": "excel-52-2", "approvedModel": "65QD6QV", "order": 0}
+  ]
+}
